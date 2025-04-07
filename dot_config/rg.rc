@@ -1,0 +1,15 @@
+# Default switches for ripgrep (rg)
+
+# Suppresses all error messages related to parsing ignore files such as .ignore or .gitignore.
+--no-ignore-messages
+
+# Only show some of super-long lines that match
+--max-columns=180
+--max-columns-preview
+
+--hidden
+
+# For searching for pip pins
+--type-add=pip:*.txt
+--type-add=pip:*.in
+--type-add=pip:*.pip
