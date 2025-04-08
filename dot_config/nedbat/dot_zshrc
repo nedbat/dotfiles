@@ -28,7 +28,7 @@ compinit
 
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
