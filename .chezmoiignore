@@ -1,3 +1,8 @@
 # Files to not track with chezmoi
 
 .config/vim/plugged
+
+# Things only needed on Mac
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon
+{{- end }}
