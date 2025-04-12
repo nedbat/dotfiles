@@ -5,4 +5,4 @@ if ! vim --version | grep -q XDG_CONFIG; then
     ln -sf ~/.config/vim/vimrc ~/.vimrc
     ln -sf ~/.config/vim ~/.vim
 fi
-vim --not-a-term +PlugInstall +qall
+vim --not-a-term +PlugInstall +PlugUpdate +qall
