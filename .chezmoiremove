@@ -4,3 +4,4 @@
 .screenrc
 .zcompdump
 .zsh/
+bin/liquidprompt
