@@ -5,8 +5,6 @@
 
 echo '(.zshrc)'
 
-export DEBUG_SH=$DEBUG_SH:.zshrc
-
 # Places to find more zsh completions
 for d in \
     /src/zsh-completions/src \

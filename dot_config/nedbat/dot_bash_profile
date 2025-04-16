@@ -6,8 +6,6 @@
 # Read by login shells, but the distinction is unimportant, so just read the
 # real .bashrc here.
 
-export DEBUG_SH=$DEBUG_SH:.bash_profile
-
 source ~/.bashrc
 
 if [ -f ~/.bash_profile.local ]; then

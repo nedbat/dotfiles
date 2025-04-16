@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Source our own dotfiles from the real ones.
 for f in ~/.config/nedbat/.[a-z]*; do
