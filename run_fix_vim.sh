@@ -1,18 +1,20 @@
 #!/bin/zsh
 
 # If we had vim state in the home directory, move it to the XDG locations.
+mkdir -p $XDG_STATE_HOME/vim
 if [ -d ~/.backup ]; then
-    mkdir -p $XDG_STATE_HOME/vim
     mv -v ~/.backup $XDG_STATE_HOME/vim/backup
+else
+    mkdir -p $XDG_STATE_HOME/vim/backup
 fi
 
 if [ -d ~/.vimundo ]; then
-    mkdir -p $XDG_STATE_HOME/vim
     mv -v ~/.vimundo $XDG_STATE_HOME/vim/undo
+else
+    mkdir -p $XDG_STATE_HOME/vim/undo
 fi
 
 if [ -f ~/.viminfo ]; then
-    mkdir -p $XDG_STATE_HOME/vim
     mv -v ~/.viminfo $XDG_STATE_HOME/vim/viminfo
 fi
 
