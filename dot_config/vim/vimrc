@@ -27,6 +27,7 @@ if filewritable(expand('$XDG_STATE_HOME/vim/backup'))
     set backupdir=$XDG_STATE_HOME/vim/backup
     set backupskip=                     "   all of them, even in /tmp
 endif
+set viminfofile=$XDG_STATE_HOME/vim/viminfo
 set shortmess+=I                        " Don't show the vim intro message
 set shortmess-=S                        " Show [17/56] when searching
 set history=500                         " Keep a LOT of history for commands
