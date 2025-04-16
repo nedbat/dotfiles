@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-#source ~/.zshrc
-
 env | sort > ~/theenv.txt
 ls -al $HOME >> ~/theenv.txt
 
