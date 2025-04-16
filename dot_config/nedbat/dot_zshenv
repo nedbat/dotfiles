@@ -3,6 +3,8 @@
 #
 # Run by all zshells
 
+export DEBUG_SH=$DEBUG_SH:.zshenv
+
 export XDG_CONFIG_HOME=$HOME/.config
 export SHELL_TYPE=zsh
 

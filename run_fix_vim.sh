@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/zsh
+
+#source ~/.zshrc
+
+env | sort > ~/theenv.txt
+ls -al $HOME >> ~/theenv.txt
 
 # If we had vim state in the home directory, move it to the XDG locations.
 if [ -d ~/.backup ]; then

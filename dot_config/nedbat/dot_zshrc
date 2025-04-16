@@ -5,6 +5,8 @@
 
 echo '(.zshrc)'
 
+export DEBUG_SH=$DEBUG_SH:.zshrc
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share

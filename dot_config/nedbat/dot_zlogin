@@ -6,6 +6,8 @@
 # Used to be a setting in iterm2 (Profile - General - Send text at start):
 #   cd; if [ "\(tab.id)" -lt "3" ]; then source ~/go/\(tab.window.number); fi
 
+export DEBUG_SH=$DEBUG_SH:.zlogin
+
 if [[ -n $ITERM_SESSION_ID ]]; then
     IFS=: read -r panename _ <<< "$ITERM_SESSION_ID"
     if [[ -f $HOME/go/iterm_$panename.sh ]]; then
