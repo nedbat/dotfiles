@@ -332,6 +332,12 @@ augroup MiscFiletypes
     autocmd BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
 augroup end
 
+" Set anything.ext.tmpl files to use ext syntax.
+augroup TemplateFiles
+    autocmd!
+    autocmd BufNewFile,BufRead *.*.tmpl exec 'setfiletype ' . expand('%:r:e')
+augroup end
+
 " Shell filetype: assume bash syntax
 let g:is_bash = 1
 
