@@ -1,5 +1,8 @@
 #!/bin/zsh
 
 # Install and/or update all the plugins, but only once a week:
+# https://www.chezmoi.io/user-guide/frequently-asked-questions/usage/#how-do-i-run-a-script-periodically
 # {{ output "date" "+%V" | trim }}
+
+echo "Updating vim plugins once a week"
 vim --not-a-term +PlugInstall +PlugUpdate +qall
