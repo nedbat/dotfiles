@@ -20,7 +20,9 @@ fi
 
 # If vim doesn't look in .config/ then symlink to get our stuff.
 if ! vim --version | grep -q XDG_CONFIG_HOME; then
-    echo linking vim config from home
-    ln -sf $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
-    ln -sf $XDG_CONFIG_HOME/vim ~/.vim
+    if [ ! -f ~/.vimrc ]; then
+        echo linking vim config from home
+        ln -sf $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
+        ln -sf $XDG_CONFIG_HOME/vim ~/.vim
+    fi
 fi
