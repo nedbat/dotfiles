@@ -5,7 +5,8 @@
 # {{ output "date" "+%V" | trim }}
 
 echo "Updating vim plugins once a week"
-vim -T builtin_dumb --not-a-term +PlugInstall +PlugUpdate +PlugClean! +qall
+vim -T builtin_dumb --not-a-term '+redir >/tmp/viminit.out' +PlugInstall +PlugUpdate +PlugClean! +qall
+echo "Vim init messages are in /tmp/viminit.out"
 
 # Not sure why .chezmoiremove doesn't work to remove this old directory.
 rm -rf .config/vim/plugged
