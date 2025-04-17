@@ -24,6 +24,3 @@ if ! vim --version | grep -q XDG_CONFIG_HOME; then
     ln -sf $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
     ln -sf $XDG_CONFIG_HOME/vim ~/.vim
 fi
-
-# Install and/or update all the plugins.
-vim --not-a-term +PlugInstall +PlugUpdate +qall
