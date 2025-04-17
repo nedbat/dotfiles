@@ -2,6 +2,7 @@
 
 # If we had vim state in the home directory, move it to the XDG locations.
 mkdir -p $XDG_STATE_HOME/vim
+mkdir -p $XDG_STATE_HOME/vim/plugged
 if [ -d ~/.backup ]; then
     mv -v ~/.backup $XDG_STATE_HOME/vim/backup
 else

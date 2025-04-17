@@ -399,7 +399,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     " https://github.com/junegunn/vim-plug
     " 'silent!' here to keep it from complaining if there's no "git" installed.
-    silent! call plug#begin()
+    silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
     " Only allow certain operations in modelines.
     Plug 'ypcrts/securemodelines'

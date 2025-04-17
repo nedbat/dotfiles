@@ -5,4 +5,7 @@
 # {{ output "date" "+%V" | trim }}
 
 echo "Updating vim plugins once a week"
-vim --not-a-term +PlugInstall +PlugUpdate +qall
+vim -T builtin_dumb --not-a-term +PlugInstall +PlugUpdate +PlugClean! +qall
+
+# Not sure why .chezmoiremove doesn't work to remove this old directory.
+rm -rf .config/vim/plugged
