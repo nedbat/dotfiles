@@ -19,6 +19,9 @@
 [gpg "ssh"]
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
+[tag]
+    gpgsign = true
+
 [user]
     name = Ned Batchelder
     email = ned@nedbatchelder.com

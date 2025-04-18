@@ -254,7 +254,4 @@
     edit = true
     add = true
 
-[tag]
-    gpgsign = true
-
 # vim: set filetype=gitconfig:
