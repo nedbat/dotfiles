@@ -12,15 +12,13 @@
     d = diff
     di = diff
     s = status -s -b --show-stash
-    lhist = log --pretty=me --graph --date=short
-    lhhist = log --pretty=me --graph --date=short --first-parent
-    lhistg = log --pretty=me --date=short -G
+    h = log -n 20 --pretty=me --graph --date=short
+    h1 = log -n 20 --pretty=me --graph --date=short --first-parent
+    lh = log --pretty=me --graph --date=short
+    lh1 = log --pretty=me --graph --date=short --first-parent
+    lhg = log --pretty=me --date=short -G
     relnotes = log --pretty=relnote --date=short --no-merges
-    h = "!f() { git --no-pager log -n 20 --pretty=me --graph --date=short $@; }; f"
-    hh = "!f() { git --no-pager log -n 20 --pretty=me --graph --date=short --first-parent $@; }; f"
-    ha = "!f() { git --no-pager log -n 35 --pretty=me --graph --date=short --all; }; f"
     tags = tag
-    #fixup = !sh -c 'git rebase -i $(git merge-base HEAD ${1:-origin/master})' -
 
     # From rafasc in #git
     # "the idea is that you use it with a list of refs, and the output should show only the necessary history to explain their relationship."
@@ -39,9 +37,6 @@
         git checkout pr/$1 && \
         git reset --hard @; \
     }; f"
-
-    # Make a pull request with hub.
-    pr = "!f() { hub pull-request "$@"; }; f"
 
     # I'm done with this merged branch, ready to switch back to another one.
     brdone = "!f() { \
@@ -145,6 +140,7 @@
         git rebase --onto $2 $(git merge-base $1 @); \
     }; f"
 
+    fixup = "!f() { : git log; git rebase -i $(git merge-base HEAD ${1:-origin/master}); }; f"
     squash = "!f() { \
         : git show; \
         git -c sequence.editor=: rebase -i --autosquash --autostash ${1:-@~10}; \
