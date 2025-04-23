@@ -1289,6 +1289,8 @@ if has("python3")
 endif
 
 " Custom formatters
+" Vim runs from the homebrew-installed Python.  Install libraries like this:
+" PIP_REQUIRE_VIRTUALENV=0 /opt/homebrew/bin/python3 -m pip install --break-system-packages pyyaml
 if python_works
     python3 << EOF_PY
 

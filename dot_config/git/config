@@ -13,6 +13,7 @@
     di = diff
     s = status -s -b --show-stash
     lhist = log --pretty=me --graph --date=short
+    lhhist = log --pretty=me --graph --date=short --first-parent
     lhistg = log --pretty=me --date=short -G
     relnotes = log --pretty=relnote --date=short --no-merges
     h = "!f() { git --no-pager log -n 20 --pretty=me --graph --date=short $@; }; f"
