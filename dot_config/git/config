@@ -131,7 +131,7 @@
 
     copysha = "!f() { \
         : git show; \
-        $XDG_CONFIG_HOME/../bin/git-copysha "$@"; \
+        $HOME/bin/git-copysha "$@"; \
     }; f"
 
     # https://nedbatchelder.com/blog/202202/moving_a_git_branch_to_a_new_base.html
@@ -140,18 +140,14 @@
         git rebase --onto $2 $(git merge-base $1 @); \
     }; f"
 
-    fixup = "!f() { : git log; git rebase -i $(git merge-base HEAD ${1:-origin/master}); }; f"
+    fixup = "!f() { \
+        : git show; \
+        git rebase -i $(git merge-base HEAD ${1:-origin/master}); \
+    }; f"
+
     squash = "!f() { \
         : git show; \
         git -c sequence.editor=: rebase -i --autosquash --autostash ${1:-@~10}; \
-    }; f"
-
-    # See the current GHA runs on this branch.
-    # https://nedbatchelder.com/blog/202303/watchgha.html
-    runs = "!f() { \
-        watch_gha_runs $@ \
-            \"$(git remote get-url origin)\" \
-            \"$(git rev-parse --abbrev-ref HEAD)\"; \
     }; f"
 
     # If this is a private repo, change the remote from git@github.com to github_private.
