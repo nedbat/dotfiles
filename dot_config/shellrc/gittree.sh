@@ -36,10 +36,10 @@ gittreeif() {
             git -C "$d" rev-parse --verify -q "$test_branch" >& /dev/null || continue
         fi
         if [[ $show_dir == true ]]; then
-            echo "---- $d ----"
+            echo -e "\e[2m---- $d ----\e[22m"
         fi
         if [[ $show_repo == true ]]; then
-            echo "----" $(git -C "$d" config --get remote.origin.url) "----"
+            echo -e "\e[2m----" $(git -C "$d" config --get remote.origin.url) "----\e[22m"
         fi
         if [[ $# == 1 && $1 == *' '* ]]; then
             (cd "$d" && eval "$1")
