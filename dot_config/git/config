@@ -169,6 +169,14 @@
         fi; \
     }; f"
 
+    # To associate a repo with personal me rather than work me.
+    nedbat = config set include.path ~/.config/git/config.nedbat
+
+    usessh = "!f() { \
+        git remote set-url origin $(git remote get-url origin | sed -e 's#https://github.com/#git@github.com:#'); \
+        git remote -v; \
+    }; f"
+
     # Adding a fork to a cloned repo.
     # See the "forkfor" settings also.
     fork = "!f() { \
@@ -181,6 +189,7 @@
         read X; \
         git remote rename origin upstream; \
         git remote add origin $origin; \
+        git fa; \
     }; f"
 
 
