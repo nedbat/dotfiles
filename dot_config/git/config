@@ -169,6 +169,29 @@
         fi; \
     }; f"
 
+    # Adding a fork to a cloned repo.
+    # See the "forkfor" settings also.
+    fork = "!f() { \
+        local upstream=$(git remote get-url origin); \
+        local github=$(echo $upstream | awk -F/ '{ print $3 }'); \
+        local user=$(git config get forkfor.$github.user); \
+        local myhost=$(git config get forkfor.$github.myhost); \
+        local origin=$(echo $upstream | awk -F/ '{ print myhost new S $5 }' myhost=$myhost S=/ new=$user); \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; \
+        read X; \
+        git remote rename origin upstream; \
+        git remote add origin $origin; \
+    }; f"
+
+
+[forkfor "github.com"]
+    user = nedbat
+    myhost = git@github.com:
+
+[forkfor "git.netflix.net"]
+    user = nbatchelder
+    myhost = https://git.netflix.net/
+
 [blame]
     # This can't be global because git whines if the file doesn't exist...
     # Use this command per-repo where the file does exist:
