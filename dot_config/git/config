@@ -165,7 +165,7 @@
                 echo Updating remote $rem; \
                 git config remote.$rem.url $(git config remote.$rem.url | \
                     sed -e 's/git@github.com:/github_private:/'); \
-            done \
+            done; \
         fi; \
     }; f"
 
@@ -185,13 +185,14 @@
         local user=$(git config get forkfor.$github.user); \
         local myhost=$(git config get forkfor.$github.myhost); \
         local origin=$(echo $upstream | awk -F/ '{ print myhost new S $5 }' myhost=$myhost S=/ new=$user); \
-        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; read X; \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; \
+        read X; \
         git remote rename origin upstream; \
         git remote add origin $origin; \
+        git fa; \
         for br in $(git branch --format='%(refname:short)'); do \
             git branch -u origin $br; \
-        done \
-        git fa; \
+        done; \
     }; f"
 
 
