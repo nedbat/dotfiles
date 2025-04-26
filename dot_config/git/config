@@ -177,6 +177,11 @@
         git remote -v; \
     }; f"
 
+    who = "!f() { \
+        git remote -v; \
+        git config get user.email; \
+    }; f"
+
     # Adding a fork to a cloned repo.
     # See the "forkfor" settings also.
     fork = "!f() { \
