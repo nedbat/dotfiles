@@ -41,6 +41,12 @@ else
     fi
 fi
 
+# Set the prompt slug for the current virtualenv.
+setvenvname() {
+    sed -i -n -e "/^prompt =/d" $VIRTUAL_ENV/pyvenv.cfg
+    echo "prompt = $1" >> $VIRTUAL_ENV/pyvenv.cfg
+}
+
 if [[ -d /usr/local/pipx ]]; then
     export PIPX_HOME=/usr/local/pipx
 fi
