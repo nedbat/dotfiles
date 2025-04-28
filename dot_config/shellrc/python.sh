@@ -41,10 +41,23 @@ else
     fi
 fi
 
+# Activate a virtualenv somewhere, default here.
+workin() {
+    for d in ${1:-.}/{venv,.venv}; do
+        if [[ -f $d/bin/activate ]]; then
+            source $d/bin/activate
+        fi
+    done
+}
+
 # Set the prompt slug for the current virtualenv.
 setvenvname() {
-    sed -i -n -e "/^prompt =/d" $VIRTUAL_ENV/pyvenv.cfg
-    echo "prompt = $1" >> $VIRTUAL_ENV/pyvenv.cfg
+    if [[ -n $VIRTUAL_ENV ]]; then
+        sed -i -n -e "/^prompt =/d" $VIRTUAL_ENV/pyvenv.cfg
+        echo "prompt = $1" >> $VIRTUAL_ENV/pyvenv.cfg
+    else
+        echo "No virtualenv activated, nothing to do"
+    fi
 }
 
 if [[ -d /usr/local/pipx ]]; then
