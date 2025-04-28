@@ -7,7 +7,7 @@ i2toast() {
     echo -ne "\033]9;$@\007"
 }
 
-if [[ -n "$ITERM_PROFILE" ]]; then
+if [[ -n "$ITERM_PROFILE" || "$LC_TERMINAL"x == "iTerm2x" ]]; then
     alias k='i2clear'
 else
     alias k='clear'
