@@ -179,6 +179,7 @@
 
     who = "!f() { \
         git remote -v; \
+        git rev-parse --symbolic-full-name @{push} || true; \
         git config get user.email; \
     }; f"
 
