@@ -183,7 +183,8 @@
         git config get user.email; \
     }; f"
 
-    # Adding a fork to a cloned repo.
+    # Adding a fork to a cloned repo. Assumes there is only an "origin" remote
+    # and that all branches should be moved to the fork.
     # See the "forkfor" settings also.
     fork = "!f() { \
         local upstream=$(git remote get-url origin); \
@@ -201,6 +202,19 @@
         done; \
     }; f"
 
+    # Removing a fork. Assumes there are two remotes: origin and upstream.
+    # Upstream becomes origin, and all branches move to origin.
+    unfork = "!f() { \
+        local upstream=$(git remote get-url origin); \
+        for br in $(git branch --format='%(refname:short)'); do \
+            git branch -u upstream $br; \
+        done; \
+        git remote remove origin; \
+        git remote rename upstream origin; \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), delete the fork, waiting...; \
+        read X; \
+        echo re-push any branches you need...; \
+    }; f"
 
 [forkfor "github.com"]
     user = nedbat
