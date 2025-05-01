@@ -16,6 +16,7 @@ for d in \
     fi
 done
 
+mkdir -p $XDG_CACHE_HOME/zsh
 autoload zmv
 autoload -Uz compinit
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
