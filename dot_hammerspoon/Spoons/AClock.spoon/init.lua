@@ -60,6 +60,17 @@ for k, v in pairs(obj._attribs) do obj[k] = v end
 ---
 --- Returns:
 ---  * The AClock object
+function getframe(width, height)
+    local mainScreen = hs.screen.primaryScreen()
+    local mainRes = mainScreen:fullFrame()
+    return {
+        x = (mainRes.w - width) / 2,
+        y = (mainRes.h - height) / 2,
+        w = width,
+        h = height
+    }
+end
+
 function obj:init()
   if not self.canvas then self.canvas = hs.canvas.new({x=0, y=0, w=0, h=0}) end
   self.canvas[1] = {
@@ -70,20 +81,23 @@ function obj:init()
     textColor = self.textColor,
     textAlignment = "center",
   }
-  local mainScreen = hs.screen'Built%-in'
+  local mainScreen = hs.screen.primaryScreen()
   local mainRes = mainScreen:fullFrame()
-  self.canvas:frame({
-    x = mainRes.x + (mainRes.w-self.width)/2,
-    y = mainRes.y + (mainRes.h-self.height)/2,
-    w = self.width,
-    h = self.height,
-  })
+  self.canvas:frame(getframe(self.width, self.height))
+  self._screen_watcher = hs.screen.watcher.new(function()
+      self:update_canvas()
+  end)
+  self._screen_watcher:start()
   self._init_done = true
   return self
 end
 
+function obj:update_canvas()
+    self.canvas:frame(getframe(self.width, self.height))
+end
+
 function obj:update_clock_text()
-  self.canvas[1].text = os.date(self.format):gsub("^0", "", 1)
+  self.canvas[1].text = os.date(self.format)
 end
 
 function obj:tick_timer_fn()
