@@ -97,7 +97,7 @@ function obj:update_canvas()
 end
 
 function obj:update_clock_text()
-  self.canvas[1].text = os.date(self.format)
+  self.canvas[1].text = os.date(self.format):gsub("^0", "", 1)
 end
 
 function obj:tick_timer_fn()
