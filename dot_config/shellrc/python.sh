@@ -60,10 +60,6 @@ setvenvname() {
     fi
 }
 
-if [[ -d /usr/local/pipx ]]; then
-    export PIPX_HOME=/usr/local/pipx
-fi
-
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DISABLE_PIP_VERSION_CHECK=1
 
