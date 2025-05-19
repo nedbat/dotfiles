@@ -1,2 +1,4 @@
 # Personal files to ignore in any repo
 .treerc
+
+**/.claude/settings.local.json
