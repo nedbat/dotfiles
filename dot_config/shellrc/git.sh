@@ -8,7 +8,7 @@ fi
 # (such as inside gittreeif).  But in some places the alias already exists,
 # so remove it first.
 unalias g 2>/dev/null
-g() { git "$@"; }
+g() { PYTHONWARNDEFAULTENCODING= git "$@"; }
 
 if command -v diff-so-fancy >/dev/null; then
     export GIT_PAGER='diff-so-fancy | less -iFRQX'
