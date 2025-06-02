@@ -18,7 +18,8 @@ git:
   renamed:
     foreground: "#FFA000"
   ignored:
-    foreground: Gray
+    foreground: Default
+    is_dimmed: true
   conflicted:
     foreground: Red
 
