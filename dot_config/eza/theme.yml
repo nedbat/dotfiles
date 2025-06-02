@@ -8,6 +8,20 @@ file_type:
   build: 
     is_underline: false
 
+git:
+  new:
+    foreground: Green
+  modified:
+    foreground: "#FFA000"
+  deleted:
+    foreground: Red
+  renamed:
+    foreground: "#FFA000"
+  ignored:
+    foreground: Gray
+  conflicted:
+    foreground: Red
+
 users:
   user_you:
     is_dimmed: true
