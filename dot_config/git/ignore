@@ -1,4 +1,5 @@
 # Personal files to ignore in any repo
 .treerc
+.DS_Store
 
 **/.claude/settings.local.json
