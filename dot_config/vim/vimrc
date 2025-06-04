@@ -609,6 +609,9 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     " https://github.com/inkarkat/vim-mark could be a replacement for quickhl
 
+    Plug 'dominikduda/vim_current_word'
+    let g:vim_current_word#highlight_delay = 500
+
     " Enable this to see the CSS colors above...
     "Plug 'ap/vim-css-color'
 

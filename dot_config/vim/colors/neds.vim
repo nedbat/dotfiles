@@ -103,6 +103,10 @@ highlight! link flogRefHead flogRef
 highlight! link flogRefHeadBranch flogRef
 highlight! link flogRefTag flogRef
 
+" https://github.com/dominikduda/vim_current_word
+highlight CurrentWordTwins guibg=#ffffbb gui=underline
+highlight CurrentWord guibg=#ffff99
+
 command! Dim highlight Normal guifg=#cccccc
 command! Undim highlight Normal guifg=Black
 
