@@ -609,7 +609,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     " https://github.com/inkarkat/vim-mark could be a replacement for quickhl
 
-    " Transiently highlight the word under the cursor
+    " Transiently highlight the word under the cursor everywhere it appears.
     Plug 'RRethy/vim-illuminate'
     let g:Illuminate_delay = 500
     let g:Illuminate_ftblacklist = ['nerdtree', 'qf', 'fugitive', 'diary']
