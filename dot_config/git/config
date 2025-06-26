@@ -13,9 +13,10 @@
     di = diff
     s = status -s -b --show-stash
     h = log -n 20 --pretty=me --graph --date=short
-    h1 = log -n 20 --pretty=me --graph --date=short --first-parent
+    h1 = h --first-parent
     lh = log --pretty=me --graph --date=short
-    lh1 = log --pretty=me --graph --date=short --first-parent
+    lh1 = lh --first-parent
+    lha = lh --all
     lhg = log --pretty=me --date=short -G
     relnotes = log --pretty=relnote --date=short --no-merges
     tags = tag
