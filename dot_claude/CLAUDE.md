@@ -19,12 +19,23 @@ Contributing for other developer guidelines.
 
 Before running commands, activate a local virtualenv, probably in `./.venv`.
 
+After making code changes, run quality checks and tests to make sure everything
+works.  You shouldn't need to be told by a human that the tests don't pass.
+
+If the current directory is a git repo, you can make code changes without asking
+permission.
+
+
 # Testing
 
 Write tests for any changes to the product code.  Product code is much more
 important than tests.  NEVER change or delete product code just to make a test
 pass unless changing or deleting the product code is part of the actual task at
 hand.
+
+Stay focused on the product changes needed. Change tests only to conform to the
+product changes underway.
+
 
 # General coding guidelines
 
