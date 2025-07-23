@@ -595,6 +595,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:gist_clip_command = 'pbcopy'
     let g:gist_detect_filetype = 1
     let g:gist_post_private = 1
+    let g:github_user = 'nedbat'
 
     Plug 't9md/vim-quickhl'
     " Highlight the current word.
