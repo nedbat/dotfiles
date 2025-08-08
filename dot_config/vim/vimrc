@@ -401,10 +401,13 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " 'silent!' here to keep it from complaining if there's no "git" installed.
     silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
+    " LSP
     Plug 'prabirshrestha/vim-lsp'
 
     let g:lsp_diagnostics_enabled = 0
     let g:lsp_document_code_action_signs_enabled = 0
+    let g:lsp_use_native_client = 1
+    let g:lsp_semantic_enabled = 1
 
     if executable('pylsp')
         au User lsp_setup call lsp#register_server({
@@ -656,7 +659,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " Transiently highlight the word under the cursor everywhere it appears.
     Plug 'RRethy/vim-illuminate'
     let g:Illuminate_delay = 500
-    let g:Illuminate_ftblacklist = ['nerdtree', 'qf', 'fugitive', 'diary']
+    " include python in the blacklist because LSP handles it.
+    let g:Illuminate_ftblacklist = ['python', 'nerdtree', 'qf', 'fugitive', 'diary']
     let g:Illuminate_ftHighlightGroups = {
         \ 'python:blacklist': [
         \       'Statement', 'PreProc', 'Constant',
