@@ -392,7 +392,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " 'silent!' here to keep it from complaining if there's no "git" installed.
     silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
-    " LSP
+    " LSP: `brew install python-lsp-server`
     Plug 'prabirshrestha/vim-lsp'
 
     let g:lsp_diagnostics_enabled = 0
@@ -401,7 +401,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:lsp_semantic_enabled = 1
 
     if executable('pylsp')
-        au User lsp_setup call lsp#register_server({
+        autocmd User lsp_setup call lsp#register_server({
             \ 'name': 'pylsp',
             \ 'cmd': {server_info->['pylsp']},
             \ 'allowlist': ['python'],
@@ -416,7 +416,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     endfunction
 
     augroup lsp_install
-        au!
+        autocmd!
         " call s:on_lsp_buffer_enabled only for languages that has the server registered.
         autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
     augroup END

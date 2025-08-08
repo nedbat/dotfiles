@@ -26,7 +26,7 @@ highlight Comment       gui=italic          guifg=DarkGreen     guibg=NONE
 highlight Constant      gui=NONE            guifg=DarkCyan      guibg=NONE
 highlight Identifier    gui=NONE            guifg=#6666FF       guibg=NONE
 highlight Statement     gui=bold            guifg=Blue          guibg=NONE
-highlight PreProc       gui=NONE            guifg=DarkRed       guibg=NONE
+highlight PreProc       gui=NONE            guifg=Blue          guibg=NONE
 highlight Type          gui=NONE            guifg=Blue          guibg=NONE
 highlight Underlined    gui=underline       guifg=NONE          guibg=NONE
 highlight Error         gui=NONE            guifg=Yellow        guibg=Red
