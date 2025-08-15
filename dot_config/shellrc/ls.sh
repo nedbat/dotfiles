@@ -12,7 +12,7 @@ if command -v eza &>/dev/null; then
     alias lt="l --tree"
     for n in {1..5}; do alias lt$n="lt --level=$n"; done
     # alias ltttt='lt --level=3'
-    for n in {1..5}; do alias lt$(printf 't%.0s' {1..$n})="lt --level=$n"; done
+    for n in {2..5}; do alias l$(printf 't%.0s' {1..$n})="lt --level=$n"; done
 else
     alias l="ls -lFhH"
     alias la="l -A"
