@@ -7,7 +7,9 @@
 #           path = ~/.config/git/config.nedbat
 #
 # 2) In specific repos, run:
-#       $ git config set include.path ~/.config/git/config.nedbat
+#       $ git nedbat
+#       # which does:
+#       #   git config set include.path ~/.config/git/config.nedbat
 #
 # 3) Copy this to ~/.gitconfig.$USER. The .zshrc will set GIT_CONFIG_GLOBAL
 #    to point to this in the home dir.  If you do this, uncomment the [include]
