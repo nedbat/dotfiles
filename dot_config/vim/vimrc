@@ -392,34 +392,59 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " 'silent!' here to keep it from complaining if there's no "git" installed.
     silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
-    " LSP: `brew install python-lsp-server`
-    Plug 'prabirshrestha/vim-lsp'
+    Plug 'yegappan/lsp'
 
-    let g:lsp_diagnostics_enabled = 0
-    let g:lsp_document_code_action_signs_enabled = 0
-    let g:lsp_use_native_client = 1
-    let g:lsp_semantic_enabled = 1
+    let lspOpts = #{
+        \ autoHighlightDiags: v:false,
+        \ highlightDiagInline: v:false,
+        \ showDiagWithVirtualText: v:false,
+        \ popupBorder: v:true,
+        \ popupBorderChars: ['—', '|', '—', '|', '┌', '┐', '┘', '└'],
+        \ }
+    autocmd User LspSetup call LspOptionsSet(lspOpts)
 
-    if executable('pylsp')
-        autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'pylsp',
-            \ 'cmd': {server_info->['pylsp']},
-            \ 'allowlist': ['python'],
-            \ })
-    endif
+    let lspServers = [
+        \ #{
+        \   name: 'pylsp',
+        \   filetype: 'python',
+        \   path: 'pylsp',
+        \   args: [],
+        \ },
+        \ ]
+    autocmd User LspSetup call LspAddServer(lspServers)
 
-    function! s:on_lsp_buffer_enabled() abort
-        setlocal omnifunc=lsp#complete
-        nmap <buffer> gd <plug>(lsp-definition)
-        nmap <buffer> gr <plug>(lsp-references)
-        nmap <buffer> K <plug>(lsp-hover)
-    endfunction
+    nnoremap K :LspHover<CR>
+    nnoremap gd :LspGotoDefinition<CR>
+    nnoremap gr :LspPeekReferences<CR>
 
-    augroup lsp_install
-        autocmd!
-        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    augroup END
+    "" LSP: `brew install python-lsp-server`
+    "Plug 'prabirshrestha/vim-lsp'
+    "
+    "let g:lsp_diagnostics_enabled = 0
+    "let g:lsp_document_code_action_signs_enabled = 0
+    "let g:lsp_use_native_client = 1
+    "let g:lsp_semantic_enabled = 1
+    "
+    "if executable('pylsp')
+    "    autocmd User lsp_setup call lsp#register_server({
+    "        \ 'name': 'pylsp',
+    "        \ 'cmd': {server_info->['pylsp']},
+    "        \ 'allowlist': ['python'],
+    "        \ })
+    "endif
+    "
+    "function! s:on_lsp_buffer_enabled() abort
+    "    setlocal omnifunc=lsp#complete
+    "    nmap <buffer> gd <plug>(lsp-definition)
+    "    nmap <buffer> gr <plug>(lsp-references)
+    "    nmap <buffer> K <plug>(lsp-hover)
+    "endfunction
+    "
+    "augroup lsp_install
+    "    autocmd!
+    "    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    "    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    "augroup END
 
     " Only allow certain operations in modelines.
     Plug 'ypcrts/securemodelines'
@@ -1143,8 +1168,8 @@ vnoremap <F1> <Nop>
 lnoremap <F1> <Nop>
 
 " I never mean to look up words under the cursor.
-noremap K <Nop>
-vnoremap K <Nop>
+"noremap K <Nop>
+"vnoremap K <Nop>
 
 " Jump to start and end of line using the home row keys.
 nnoremap H ^
