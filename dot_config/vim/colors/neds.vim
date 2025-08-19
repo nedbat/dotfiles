@@ -107,8 +107,10 @@ highlight! link flogRefTag flogRef
 highlight illuminatedWord guifg=Black guibg=#ffeebb gui=NONE
 
 " LSP highlighting
-highlight LspWriteRef guifg=Black guibg=#ddffbb gui=NONE
-highlight LspReadRef guifg=Black guibg=#ffeebb gui=NONE
+highlight LspPopup          gui=None    guifg=Black     guibg=#ffffcc
+highlight LspPopupBorder    gui=None    guifg=#666666   guibg=#ffffcc
+highlight LspWriteRef       gui=None    guifg=Black     guibg=#ddffbb
+highlight LspReadRef        gui=None    guifg=Black     guibg=#ffeebb
 
 command! Dim highlight Normal guifg=#cccccc
 command! Undim highlight Normal guifg=Black

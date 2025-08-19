@@ -399,7 +399,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ highlightDiagInline: v:false,
         \ showDiagWithVirtualText: v:false,
         \ popupBorder: v:true,
-        \ popupBorderChars: ['—', '|', '—', '|', '┌', '┐', '┘', '└'],
+        \ popupBorderChars: ['─', '│', '─', '│', '┌', '┐', '┘', '└'],
         \ }
     autocmd User LspSetup call LspOptionsSet(lspOpts)
 
