@@ -106,6 +106,10 @@ highlight! link flogRefTag flogRef
 " RRethy/vim-illuminate
 highlight illuminatedWord guifg=Black guibg=#ffeebb gui=NONE
 
+" LSP highlighting
+highlight LspWriteRef guifg=Black guibg=#ddffbb gui=NONE
+highlight LspReadRef guifg=Black guibg=#ffeebb gui=NONE
+
 command! Dim highlight Normal guifg=#cccccc
 command! Undim highlight Normal guifg=Black
 

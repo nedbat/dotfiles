@@ -416,6 +416,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     nnoremap K :LspHover<CR>
     nnoremap gd :LspGotoDefinition<CR>
     nnoremap gr :LspPeekReferences<CR>
+    nnoremap gh :LspHighlight<CR>
 
     "" LSP: `brew install python-lsp-server`
     "Plug 'prabirshrestha/vim-lsp'
@@ -1251,8 +1252,8 @@ set nowrapscan                          " Don't wrap to top of file when searchi
 nnoremap <Leader>n nzvzz
 nnoremap <Leader>N Nzvzz
 " <C-L> was redraw, make it \z
-nnoremap <Leader>z :nohlsearch<CR><C-L>
-nnoremap <Leader><Leader>z :nohlsearch<CR>zvzz<C-L>
+nnoremap <Leader>z :nohlsearch<CR>:LspHighlightClear<CR><C-L>
+nnoremap <Leader><Leader>z :nohlsearch<CR>:LspHighlightClear<CR>zvzz<C-L>
 
 " My own crazy grep program
 set grepprg=~/bin/gerp.py
