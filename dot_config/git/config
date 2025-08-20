@@ -178,6 +178,11 @@
         git remote -v; \
     }; f"
 
+    useprivate = "!f() { \
+        git remote set-url origin $(git remote get-url origin | sed -e 's#https://github.com/#github_private:#'); \
+        git remote -v; \
+    }; f"
+
     who = "!f() { \
         git remote -v; \
         git rev-parse --symbolic-full-name @{push} || true; \
