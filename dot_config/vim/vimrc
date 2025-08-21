@@ -677,7 +677,15 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'RRethy/vim-illuminate'
     let g:Illuminate_delay = 500
     " include python in the blacklist because LSP handles it.
-    let g:Illuminate_ftblacklist = ['python', 'nerdtree', 'qf', 'fugitive', 'diary']
+    let g:Illuminate_ftblacklist = [
+        \ 'python',
+        \ 'nerdtree',
+        \ 'qf',
+        \ 'fugitive',
+        \ 'diary',
+        \ 'markdown',
+        \ 'rst',
+        \ ]
     let g:Illuminate_ftHighlightGroups = {
         \ 'python:blacklist': [
         \       'Statement', 'PreProc', 'Constant',
