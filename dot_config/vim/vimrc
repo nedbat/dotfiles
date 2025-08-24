@@ -510,7 +510,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
             \ '\.o$', '\.so$',
             \ '^__pycache__$', '\.egg-info$',
             \ 'node_modules',
-        \ ]
+            \ ]
         let g:NERDTreeSortOrder = ['^_.*', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
         let g:NERDTreeShowBookmarks = 0
         let g:NERDTreeMinimalUI = 1
@@ -532,11 +532,11 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " Plug 'Xuyuanp/nerdtree-git-plugin'
 
     Plug 'scrooloose/nerdcommenter', {
-    \ 'on': [
-        \ '<Plug>NERDCommenterComment',
-        \ '<Plug>NERDCommenterUncomment'
-        \ ]
-    \ }
+        \ 'on': [
+            \ '<Plug>NERDCommenterComment',
+            \ '<Plug>NERDCommenterUncomment'
+            \ ]
+        \ }
 
     " Don't map all the keys
     let g:NERDCreateDefaultMappings = 0
@@ -1085,7 +1085,7 @@ noremap <silent> gw :set opfunc=BetterGW<CR>g@
 nmap <Leader>p gwap
 nmap <Leader><Leader>p gw}
 nnoremap ,a :setlocal <C-R>=(&formatoptions =~# "a") ? 'formatoptions-=a' : 'formatoptions+=a'<CR><CR>
-nmap <Leader><Leader>b :write\|:!~/.local/bin/black -q %<CR><CR>
+nmap <Leader><Leader>b :write\|:!~/.local/bin/ruff format -q %<CR><CR>
 
 " Duplicate the selection.
 noremap <Leader><Leader>d yPgvo<Esc>
