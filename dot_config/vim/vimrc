@@ -395,11 +395,15 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'yegappan/lsp'
 
     let lspOpts = #{
-        \ autoHighlightDiags: v:false,
+        \ autoComplete: v:true,
+        \ autoHighlightDiags: v:true,
         \ highlightDiagInline: v:false,
-        \ showDiagWithVirtualText: v:false,
+        \ noNewlineInCompletion: v:true,
+        \ omniComplete: v:false,
         \ popupBorder: v:true,
         \ popupBorderChars: ['─', '│', '─', '│', '┌', '┐', '┘', '└'],
+        \ semanticHighlight: v:true,
+        \ showDiagWithVirtualText: v:false,
         \ }
     autocmd User LspSetup call LspOptionsSet(lspOpts)
 
