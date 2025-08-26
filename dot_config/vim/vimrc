@@ -553,6 +553,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     map <Leader>cu <Plug>NERDCommenterUncomment
 
     Plug 'majutsushi/tagbar'                            " Tagbar, no 'on', so that statusbar will have tags
+    " $ brew install universal-ctags
     let g:tagbar_width = 40
     let g:tagbar_zoomwidth = 30
     let g:tagbar_sort = 0                               " sort by order in file
