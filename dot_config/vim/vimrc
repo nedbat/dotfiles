@@ -396,7 +396,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     let lspOpts = #{
         \ autoComplete: v:true,
-        \ autoHighlightDiags: v:true,
+        \ autoHighlightDiags: v:false,
         \ highlightDiagInline: v:false,
         \ noNewlineInCompletion: v:true,
         \ omniComplete: v:false,
