@@ -627,7 +627,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:tagbar_type_rst = {
         \ 'ctagstype' : 'rst',
         \ 'ctagsbin' : 'python2.7',
-        \ 'ctagsargs' : '~/.config/vim/plugged/rst2ctags/rst2ctags.py -f - --sort=yes',
+        \ 'ctagsargs' : expand('$XDG_STATE_HOME/vim/plugged') . '/rst2ctags/rst2ctags.py -f - --sort=yes',
         \ 'kinds' : [
             \ 's:sections',
             \ 'i:images'
