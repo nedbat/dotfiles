@@ -1,6 +1,7 @@
 # Pythons
 alias p='python3'
 alias te='tox -q -e'
+alias tm='tox -q -m'
 
 ten0k() {
     tox -q -e $1 -- -n 0 -k $2 $3 $4 $5
