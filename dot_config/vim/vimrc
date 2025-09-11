@@ -643,20 +643,11 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     Plug 'mattn/webapi-vim'
     Plug 'mattn/vim-gist', { 'on': 'Gist' }
+    " be sure github.user is set in git.
+    " token only needs "gist" permission.
     let g:gist_clip_command = 'pbcopy'
     let g:gist_detect_filetype = 1
     let g:gist_post_private = 1
-
-    function! GetGithubUser()
-        let git_user = system('git config --get github.user 2>/dev/null')
-        if v:shell_error == 0 && !empty(substitute(git_user, '\n', '', 'g'))
-            return substitute(git_user, '\n', '', 'g')
-        else
-            return fnamemodify($HOME, ':t')
-        endif
-    endfunction
-
-    let g:github_user = GetGithubUser()
 
     Plug 't9md/vim-quickhl'
     " Highlight the current word.
@@ -747,7 +738,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ }
 
     Plug 'tpope/vim-rhubarb'                            " GitHub support for fugitive
-    let g:github_enterprise_urls = ['https://git.netflix.net']
     noremap <Leader>g\ :Git<CR>:normal <Leader>1<CR>
     noremap <Leader>gb :Git blame<CR>
     noremap <Leader>gd :normal <Leader><Leader>1<CR>:Gdiffsplit<CR>
@@ -1375,6 +1365,10 @@ nnoremap Q @q
 xnoremap Q :'<,'>normal @q<CR>
 
 runtime macros/matchit.vim
+
+" local-ish customizations
+runtime ../work/vim/*.vim
+runtime ../local/vim/*.vim
 
 " Figure out if Python is properly configured.
 let python_works = 0

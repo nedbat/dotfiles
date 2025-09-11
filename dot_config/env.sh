@@ -3,12 +3,16 @@
 
 # Source the stuff in .config/shellenv
 
-for MODULE in $XDG_CONFIG_HOME/shellenv/*.sh; do
-    source $MODULE
-done
+for subdir in '' work local; do
+    if [[ -d $XDG_CONFIG_HOME/$subdir/shellenv ]]; then
+        for MODULE in $XDG_CONFIG_HOME/shellenv/*.sh; do
+            source $MODULE
+        done
 
-if [[ $SHELL_TYPE == zsh ]]; then
-    for MODULE in $XDG_CONFIG_HOME/shellenv/*.zsh; do
-        source $MODULE
-    done
-fi
+        if [[ $SHELL_TYPE == zsh ]]; then
+            for MODULE in $XDG_CONFIG_HOME/shellenv/*.zsh; do
+                source $MODULE
+            done
+        fi
+    fi
+done
