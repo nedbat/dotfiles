@@ -646,7 +646,17 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:gist_clip_command = 'pbcopy'
     let g:gist_detect_filetype = 1
     let g:gist_post_private = 1
-    let g:github_user = 'nedbat'
+
+    function! GetGithubUser()
+        let git_user = system('git config --get github.user 2>/dev/null')
+        if v:shell_error == 0 && !empty(substitute(git_user, '\n', '', 'g'))
+            return substitute(git_user, '\n', '', 'g')
+        else
+            return fnamemodify($HOME, ':t')
+        endif
+    endfunction
+
+    let g:github_user = GetGithubUser()
 
     Plug 't9md/vim-quickhl'
     " Highlight the current word.
