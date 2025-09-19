@@ -39,6 +39,9 @@
         git reset --hard @; \
     }; f"
 
+    # Make and switch to a new branch prefixed with my GitHub name.
+    swc = "!f(){ git switch -c $(git config github.user)/$1; }; f"
+
     # I'm done with this merged branch, ready to switch back to another one.
     brdone = "!f() { \
         : git show; \
