@@ -691,6 +691,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ 'diary',
         \ 'markdown',
         \ 'rst',
+        \ 'xml',
         \ ]
     let g:Illuminate_ftHighlightGroups = {
         \ 'python:blacklist': [
