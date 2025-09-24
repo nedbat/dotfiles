@@ -44,6 +44,6 @@ product changes underway.
 - Don't write comments describing what the code does. Only include a comment to
   explain why the code is the way it is.
 
-- Never leave trailing spaces in files.
+- NEVER leave trailing spaces in files.
 
 - Verify your changes by running tests.
