@@ -8,6 +8,8 @@ for n in {1..5}; do alias $(printf 'x%.0s' {1..$n})="pushd +$n >/dev/null"; done
 for n in {1..9}; do alias x$n="pushd +$n >/dev/null"; done
 alias xp='pushd >/dev/null'
 alias xq='popd >/dev/null'
+# To get rid of the next directory if it no longer exists
+alias xdrop='popd +1 >/dev/null'
 alias xs='dirs -v'
 alias xc='dirs -c'
 
