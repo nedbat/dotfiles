@@ -392,6 +392,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " 'silent!' here to keep it from complaining if there's no "git" installed.
     silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
+    Plug 'github/copilot.vim'
+
     Plug 'yegappan/lsp'
 
     let lspOpts = #{
