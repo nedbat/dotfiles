@@ -393,6 +393,10 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     silent! call plug#begin(expand('$XDG_STATE_HOME/vim/plugged'))
 
     Plug 'github/copilot.vim'
+    let g:copilot_filetypes = {
+        \ 'diary': v:false,
+        \ 'xml': v:false,
+        \ }
 
     Plug 'yegappan/lsp'
 
@@ -887,6 +891,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \   }
         \}
     endif
+
+    Plug 'Einenlum/yaml-revealer'
 
     " Open URLs, because netrw's gx is broken: https://github.com/vim/vim/issues/1386
     Plug 'dhruvasagar/vim-open-url'
