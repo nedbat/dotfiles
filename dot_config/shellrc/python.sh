@@ -44,7 +44,7 @@ fi
 
 # Activate a virtualenv somewhere, default here.
 workin() {
-    for d in ${1:-.}/{venv,.venv}; do
+    for d in ${1:-.}/{.,venv,.venv}; do
         if [[ -f $d/bin/activate ]]; then
             source $d/bin/activate
         fi
