@@ -1,2 +1,2 @@
 alias cz="chezmoi"
-alias czg="chezmoi git --"
+#alias czg="chezmoi git --"
