@@ -8,7 +8,7 @@
 #}
 
 if [[ -n "$ITERM_PROFILE" || "$LC_TERMINAL"x == "iTerm2x" ]]; then
-    alias k='i2clear'
+    alias k="printf '\e]50;ClearScrollback\a'"
 else
     alias k='clear'
 fi
