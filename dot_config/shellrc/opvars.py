@@ -49,6 +49,8 @@ def main():
                 oldvars.remove(varname)
 
         if args:
+            if not oldvars:
+                cmd('export PREOP_VARS_TITLE="$WINDOW_TITLE"')
             cmd(f"export {' '.join(map(shlex.quote, args))}")
             cmd(f"export {OPVARS_VAR}='{' '.join(opvars)}'")
             stars = "*" * len(opvars)
@@ -56,7 +58,7 @@ def main():
             cmd(f"echo set these: {' '.join(newvars)}")
             if oldvars:
                 cmd(f"echo still set: {' '.join(oldvars)}")
-
+            cmd(f'title "$PREOP_VARS_TITLE {stars}"')
     elif op == "unset":
         if opvars:
             cmd(f"unset {' '.join(opvars)}")
@@ -65,6 +67,8 @@ def main():
             cmd(f"echo Nothing set")
         cmd(f"export {PROMPT_VAR}=''")
         cmd(f"unset {OPVARS_VAR}")
+        cmd('title "$PREOP_VARS_TITLE"')
+        cmd("unset PREOP_VARS_TITLE")
 
     end_cmd()
 
