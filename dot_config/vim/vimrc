@@ -1029,6 +1029,17 @@ if v:version >= 900
     enddef
 endif
 
+" Auto-create needed directories when saving.
+function! MkdirOnSave()
+    let l:dir = expand('%:h')
+    if !isdirectory(l:dir)
+        if confirm('Create directory "' . l:dir . '"?', "&Yes\n&No") == 1
+            call mkdir(l:dir, 'p')
+        endif
+    endif
+endfunction
+
+autocmd BufWritePre * call MkdirOnSave()
 
 " From https://github.com/Julian/dotfiles/blob/master/.vimrc
 command! DiffThese call <SID>DiffTheseCommand()

@@ -6,6 +6,7 @@ set guioptions-=R                       " No scrollbars on right for vsplit wind
 set guioptions-=l                       " No scrollbars on left
 set guioptions-=L                       " No scrollbars on left
 set guioptions-=b                       " No scrollbars on bottom
+set guioptions+=c                       " Always use textual prompting
 
 " Prevent the mouse from popping up a menu.
 set mousemodel=extend
