@@ -58,7 +58,7 @@ def main():
             cmd(f"echo set these: {' '.join(newvars)}")
             if oldvars:
                 cmd(f"echo still set: {' '.join(oldvars)}")
-            cmd(f'title "$PREOP_VARS_TITLE {stars}"')
+            cmd('title "\N{WARNING SIGN}\xA0 $PREOP_VARS_TITLE \xA0\N{WARNING SIGN}"')
     elif op == "unset":
         if opvars:
             cmd(f"unset {' '.join(opvars)}")
