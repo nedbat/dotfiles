@@ -7,6 +7,7 @@ import sys
 
 OPVARS_VAR = "_OPVARS"
 PROMPT_VAR = f"{OPVARS_VAR}_PROMPT"
+ORIGNAL_TITLE_VAR = f"{OPVARS_VAR}_ORIGINAL_TITLE"
 
 def read_values():
     try:
@@ -50,7 +51,7 @@ def main():
 
         if args:
             if not oldvars:
-                cmd('export PREOP_VARS_TITLE="$WINDOW_TITLE"')
+                cmd(f'export {ORIGNAL_TITLE_VAR}="$WINDOW_TITLE"')
             cmd(f"export {' '.join(map(shlex.quote, args))}")
             cmd(f"export {OPVARS_VAR}='{' '.join(opvars)}'")
             stars = "*" * len(opvars)
@@ -58,7 +59,7 @@ def main():
             cmd(f"echo set these: {' '.join(newvars)}")
             if oldvars:
                 cmd(f"echo still set: {' '.join(oldvars)}")
-            cmd('title "\N{WARNING SIGN}\xA0 $PREOP_VARS_TITLE \xA0\N{WARNING SIGN}"')
+            cmd(f'title "\N{WARNING SIGN}\xA0 ${ORIGNAL_TITLE_VAR} \xA0\N{WARNING SIGN}"')
     elif op == "unset":
         if opvars:
             cmd(f"unset {' '.join(opvars)}")
@@ -67,8 +68,8 @@ def main():
             cmd(f"echo Nothing set")
         cmd(f"export {PROMPT_VAR}=''")
         cmd(f"unset {OPVARS_VAR}")
-        cmd('title "$PREOP_VARS_TITLE"')
-        cmd("unset PREOP_VARS_TITLE")
+        cmd(f'title "${ORIGNAL_TITLE_VAR}"')
+        cmd(f"unset {ORIGNAL_TITLE_VAR}")
 
     end_cmd()
 
