@@ -936,7 +936,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         autocmd ColorScheme neds let g:rainbow_conf['guifgs'] = ['royalblue3', 'darkorange3', 'seagreen4', 'firebrick']
     augroup end
 
-    Plug 'taze55/vim-dirdifftree', { 'on': 'DirDiffTree' }
+    " It doesn't show which files are different in the tree view:
+    " Plug 'taze55/vim-dirdifftree', { 'on': 'DirDiffTree' }
 
     Plug 'chrisbra/vim-diff-enhanced'
 
