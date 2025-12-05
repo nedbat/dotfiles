@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+# Clone or update the zsh-users/zsh-completions repo for shell completions.
+# https://www.chezmoi.io/user-guide/frequently-asked-questions/usage/#how-do-i-run-a-script-periodically
+# {{ output "date" "+%V" | trim }}
+
+if [[ -d ~/.config/zsh-completions/zsh-users ]]; then
+    echo "Updating existing zsh-users/zsh-completions repo"
+    git -C ~/.config/zsh-completions/zsh-users pull
+else
+    echo "Cloning zsh-users/zsh-completions repo"
+    pushd ~/.config/zsh-completions
+    git clone https://github.com/zsh-users/zsh-completions.git zsh-users
+    popd
+fi
