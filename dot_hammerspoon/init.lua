@@ -170,14 +170,21 @@ end
 -- App switching
 --
 
--- for index, app in ipairs(hs.application.runningApplications()) do
---     print(app, app:title())
--- end
+-- print("Running applications:")
+for index, app in ipairs(hs.application.runningApplications()) do
+    local path = app:path()
+    -- print(app)
+    -- print(app:path())
+    if path and path:find("Messenger") then
+        messenger_path = path
+    end
+end
+-- print("-----")
 
 appShortcuts = {
     {"D", "Discord"},
     {"F", "Spotify"},
-    {"G", "Messenger"},
+    {"G", messenger_path},
     {"H", "Google Chrome"},
     {"I", "Textual 7"},
     {"M", "Mail"},
