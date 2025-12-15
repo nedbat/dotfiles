@@ -229,10 +229,6 @@
     user = nedbat
     myhost = git@github.com:
 
-[forkfor "git.netflix.net"]
-    user = nbatchelder
-    myhost = https://git.netflix.net/
-
 [blame]
     # This can't be global because git whines if the file doesn't exist...
     # Use this command per-repo where the file does exist:
@@ -310,5 +306,8 @@
 [scriv "create"]
     edit = true
     add = true
+
+[include]
+    path = ~/.config/work/git/config
 
 # vim: set filetype=gitconfig:
