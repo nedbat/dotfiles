@@ -1,5 +1,12 @@
 # Default switches for ripgrep (rg)
 
+# Never look in these directories:
+--glob=!Library
+--glob=!.cache
+--glob=!.vscode
+--glob=!.local
+--glob=!.cargo
+
 # Suppresses all error messages related to parsing ignore files such as .ignore or .gitignore.
 --no-ignore-messages
 
