@@ -428,35 +428,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     nnoremap gr :LspPeekReferences<CR>
     nnoremap gh :LspHighlight<CR>
 
-    "" LSP: `brew install python-lsp-server`
-    "Plug 'prabirshrestha/vim-lsp'
-    "
-    "let g:lsp_diagnostics_enabled = 0
-    "let g:lsp_document_code_action_signs_enabled = 0
-    "let g:lsp_use_native_client = 1
-    "let g:lsp_semantic_enabled = 1
-    "
-    "if executable('pylsp')
-    "    autocmd User lsp_setup call lsp#register_server({
-    "        \ 'name': 'pylsp',
-    "        \ 'cmd': {server_info->['pylsp']},
-    "        \ 'allowlist': ['python'],
-    "        \ })
-    "endif
-    "
-    "function! s:on_lsp_buffer_enabled() abort
-    "    setlocal omnifunc=lsp#complete
-    "    nmap <buffer> gd <plug>(lsp-definition)
-    "    nmap <buffer> gr <plug>(lsp-references)
-    "    nmap <buffer> K <plug>(lsp-hover)
-    "endfunction
-    "
-    "augroup lsp_install
-    "    autocmd!
-    "    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    "    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    "augroup END
-
     " Only allow certain operations in modelines.
     Plug 'ypcrts/securemodelines'
 
