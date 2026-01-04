@@ -398,6 +398,12 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ 'xml': v:false,
         \ }
 
+    " https://github.com/macvim-dev/macvim/issues/1321 maybe?
+    " Copilot uses <M-\>, but mac gvim inserts a Ü character, so we need to
+    " choose different mappings.
+    inoremap qq\ <Plug>(copilot-suggest)
+    inoremap qq] <Plug>(copilot-next)
+
     Plug 'yegappan/lsp'
 
     let lspOpts = #{
@@ -1231,13 +1237,12 @@ cnoremap <C-V> <C-R>+
 " Quick escape-and-save from insert mode.
 inoremap <silent> jj <Esc>:update<CR>
 inoremap <silent> jJ <Esc>:update<CR>
+" Save from insert mode, and stay in insert mode.
 inoremap <silent> qqj <C-O>:update<CR>
-" Quick one-command escape from insert mode.
-inoremap qqo <C-O>
+" Format the paragraph I'm typing, and keep typing.
 inoremap qqp <C-O>gwap
-" Insert a newline, but keep typing where I was. Also, delete that newline.
+" Insert a newline, but keep typing where I was.
 inoremap qq<CR> <CR><Esc>kA
-imap qqq<CR> <Esc>Jda<Space>
 
 " Allow undoing <C-U> (delete text typed in the current line)
 inoremap <C-U> <C-G>u<C-U>
@@ -1355,6 +1360,9 @@ xnoremap k gk
 " qq to record, Q to replay (thanks, junegunn)
 nnoremap Q @q
 xnoremap Q :'<,'>normal @q<CR>
+
+" Tab selects items from the pop-up menu, or Copilot suggestion if no menu.
+inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : copilot#Accept()
 
 runtime macros/matchit.vim
 
