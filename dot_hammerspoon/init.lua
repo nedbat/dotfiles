@@ -244,7 +244,7 @@ local function showVolumeOverlay()
     if volumeCanvas then volumeCanvas:delete() end
     if volumeTimer then volumeTimer:stop() end
     
-    local screen = hs.screen.mainScreen():frame()
+    local screen = hs.screen.mainScreen():fullFrame()
     local barWidth = 300
     local barHeight = 40
     local x = (screen.w - barWidth) / 2
