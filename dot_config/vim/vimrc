@@ -459,8 +459,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPMRUFiles', 'CtrlPBuffer'] }
     noremap <silent> <Leader>e :CtrlP<CR>
-    noremap <Leader><Leader>e :e<Space>
-    noremap <silent> <Leader>r :CtrlPMRUFiles<CR>
+    "noremap <Leader><Leader>e :e<Space>
+    "noremap <silent> <Leader>r :CtrlPMRUFiles<CR>
     noremap <silent> <Leader>b :CtrlPBuffer<CR>
     let g:ctrlp_clear_cache_on_exit = 0
     let g:ctrlp_custom_ignore = {
@@ -558,13 +558,14 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ ]
     \ }
 
-    let g:tagbar_type_html = {
-        \ 'ctagstype' : 'html',
-        \ 'sort' : 0,
-        \ 'kinds' : [
-            \ 'h:headings'
-        \ ]
-    \ }
+    " This causes .html files to flood errors
+    "let g:tagbar_type_html = {
+    "    \ 'ctagstype' : 'html',
+    "    \ 'sort' : 0,
+    "    \ 'kinds' : [
+    "        \ 'h:headings'
+    "    \ ]
+    "\ }
 
     let g:tagbar_type_scss = {
         \ 'ctagstype' : 'Scss',
