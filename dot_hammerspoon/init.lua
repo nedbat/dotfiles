@@ -161,7 +161,7 @@ watcher = hs.screen.watcher.newWithActiveScreen(createCanvas):start()
 -- Redraw every 3 seconds.
 timer = hs.timer.doEvery(3, drawInfo)
 -- Redraw when any audio setting changes.
-for i, dev in ipairs(hs.audiodevice.allOutputDevices()) do
+for _, dev in ipairs(hs.audiodevice.allOutputDevices()) do
     dev:watcherCallback(drawInfo):watcherStart()
 end
 
@@ -171,12 +171,14 @@ end
 --
 
 -- print("Running applications:")
-for index, app in ipairs(hs.application.runningApplications()) do
-    local path = app:path()
-    -- print(app)
-    -- print(app:path())
-    if path and path:find("Messenger") then
-        messenger_path = path
+for _, app in ipairs(hs.application.runningApplications()) do
+    local ok, path = pcall(function() return app:path() end)
+    if ok then
+        -- print(app)
+        -- print(app:path())
+        if path and path:find("Messenger") then
+            messenger_path = path
+        end
     end
 end
 -- print("-----")
@@ -198,7 +200,7 @@ appShortcuts = {
     {"Z", "zoom.us"},
 }
 
-for i, shortcut in ipairs(appShortcuts) do
+for _, shortcut in ipairs(appShortcuts) do
     hs.hotkey.bind({"ctrl", "alt", "cmd"}, shortcut[1], function()
         hs.application.launchOrFocus(shortcut[2])
     end)
@@ -217,7 +219,7 @@ mediaShortcuts = {
     {"pageup", "PLAY"},
 }
 
-for i, shortcut in ipairs(mediaShortcuts) do
+for _, shortcut in ipairs(mediaShortcuts) do
     hs.hotkey.bind({"ctrl", "alt", "cmd"}, shortcut[1], function()
         hs.eventtap.event.newSystemKeyEvent(shortcut[2], true):post()
         hs.eventtap.event.newSystemKeyEvent(shortcut[2], false):post()
