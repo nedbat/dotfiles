@@ -225,3 +225,81 @@ for _, shortcut in ipairs(mediaShortcuts) do
         hs.eventtap.event.newSystemKeyEvent(shortcut[2], false):post()
     end)
 end
+
+--
+-- Sound volume overlay, by Claude
+--
+
+local volumeCanvas = nil
+local volumeTimer = nil
+local currentDevice = nil
+
+local function showVolumeOverlay()
+    local device = hs.audiodevice.defaultOutputDevice()
+    if not device then return end
+    
+    local volume = device:volume() or 0
+    local muted = device:muted()
+    
+    if volumeCanvas then volumeCanvas:delete() end
+    if volumeTimer then volumeTimer:stop() end
+    
+    local screen = hs.screen.mainScreen():frame()
+    local barWidth = 300
+    local barHeight = 40
+    local x = (screen.w - barWidth) / 2
+    local y = (screen.h - barHeight) / 2
+    
+    volumeCanvas = hs.canvas.new({x = x, y = y, w = barWidth, h = barHeight})
+    
+    volumeCanvas:appendElements({
+        type = "rectangle",
+        fillColor = {white = 0.2, alpha = 0.8},
+        roundedRectRadii = {xRadius = 5, yRadius = 5},
+    })
+    
+    local displayVolume = muted and 0 or volume
+    volumeCanvas:appendElements({
+        type = "rectangle",
+        frame = {x = 2, y = 2, w = (barWidth - 4) * (displayVolume / 100), h = barHeight - 4},
+        fillColor = {blue = 0.6, green = 0.7, alpha = 0.9},
+        roundedRectRadii = {xRadius = 3, yRadius = 3},
+    })
+    
+    volumeCanvas:show()
+    
+    volumeTimer = hs.timer.doAfter(2, function()
+        if volumeCanvas then
+            volumeCanvas:delete()
+            volumeCanvas = nil
+        end
+    end)
+end
+
+local function setupDeviceWatcher()
+    if currentDevice then
+        currentDevice:watcherCallback(nil)
+        currentDevice:watcherStop()
+    end
+    
+    currentDevice = hs.audiodevice.defaultOutputDevice()
+    if currentDevice then
+        currentDevice:watcherCallback(function(uid, event, scope, element)
+            if event == "vmvc" or event == "mute" then
+                showVolumeOverlay()
+            end
+        end)
+        currentDevice:watcherStart()
+    end
+end
+
+-- Set up watcher on current device
+setupDeviceWatcher()
+
+-- Re-setup if default device changes
+hs.audiodevice.watcher.setCallback(function(event)
+    if event == "dOut" then
+        setupDeviceWatcher()
+    end
+end)
+hs.audiodevice.watcher.start()
