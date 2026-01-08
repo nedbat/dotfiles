@@ -253,16 +253,22 @@ local function showVolumeOverlay()
     
     volumeCanvas:appendElements({
         type = "rectangle",
-        fillColor = {white = 0.2, alpha = 0.8},
+        fillColor = {white = 0.4, alpha = 0.6},
         roundedRectRadii = {xRadius = 5, yRadius = 5},
     })
     
-    local displayVolume = muted and 0 or volume
+    if muted then
+        margin = 10
+        fillColor = {red = 0.9, alpha = 0.8}
+    else
+        margin = 3
+        fillColor = {blue = 0.3, green = 0.8, alpha = 0.8}
+    end
     volumeCanvas:appendElements({
         type = "rectangle",
-        frame = {x = 2, y = 2, w = (barWidth - 4) * (displayVolume / 100), h = barHeight - 4},
-        fillColor = {blue = 0.6, green = 0.7, alpha = 0.9},
+        frame = {x = margin, y = margin, w = (barWidth - 2 * margin) * volume/100, h = barHeight - 2 * margin},
         roundedRectRadii = {xRadius = 3, yRadius = 3},
+        fillColor = fillColor,
     })
     
     volumeCanvas:show()
