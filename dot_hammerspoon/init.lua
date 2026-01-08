@@ -1,5 +1,4 @@
--- other stuff:
--- https://github.com/miromannino/miro-windows-manager
+-- Ned's Hammerspoon config
 
 -- reload on save: https://github.com/Porco-Rosso/PorcoSpoon/blob/main/init.lua#L1-L14
 function reloadConfig(files)
@@ -89,7 +88,7 @@ function createCanvas()
     local fullFrame = screen:fullFrame()
     canvas = hs.canvas.new({
         x = fullFrame.x,
-        y = frame.y,
+        y = frame.y - 1,    -- Tahoe left a 1-pixel gap
         w = frame.x - fullFrame.x,
         h = fullFrame.h / 2,
     })
@@ -100,7 +99,7 @@ function createCanvas()
     }
     canvas[2] = {
         type = "text",
-        frame = {x=2, y=0, h="100%", w="100%"},
+        frame = {x=2, y=1, h="100%", w="100%"},
         textFont = "SF Pro Text",
         textSize = 14,
         textColor = {hex="#000000"},
