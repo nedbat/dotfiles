@@ -193,7 +193,7 @@ appShortcuts = {
     -- {"Q", "Visual Studio Code"},
     {"S", "Slack"},
     {"T", "iTerm"},
-    -- {"U", "Tuple"},
+    {"U", "Tuple"},
     {"V", "MacVim"},
     {"X", "Firefox"},
     {"Z", "zoom.us"},
@@ -243,11 +243,11 @@ local function showVolumeOverlay()
     if volumeCanvas then volumeCanvas:delete() end
     if volumeTimer then volumeTimer:stop() end
     
-    local screen = hs.screen.mainScreen():fullFrame()
+    local frame = hs.screen.primaryScreen():fullFrame()
     local barWidth = 300
     local barHeight = 40
-    local x = (screen.w - barWidth) / 2
-    local y = (screen.h - barHeight) / 2
+    local x = (frame.w - barWidth) / 2
+    local y = (frame.h - barHeight) / 2
     
     volumeCanvas = hs.canvas.new({x = x, y = y, w = barWidth, h = barHeight})
     
