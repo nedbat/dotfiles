@@ -535,7 +535,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     map <Leader>cc <Plug>NERDCommenterComment
     map <Leader>cu <Plug>NERDCommenterUncomment
 
-    Plug 'majutsushi/tagbar'                            " Tagbar, no 'on', so that statusbar will have tags
+    Plug 'preservim/tagbar'                             " Tagbar, no 'on', so that statusbar will have tags
     " $ brew install universal-ctags
     let g:tagbar_width = 40
     let g:tagbar_zoomwidth = 30
@@ -610,7 +610,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'jszakmeister/rst2ctags'                       " Tag support for .rst files
     let g:tagbar_type_rst = {
         \ 'ctagstype' : 'rst',
-        \ 'ctagsbin' : 'python2.7',
+        \ 'ctagsbin' : 'python3',
         \ 'ctagsargs' : expand('$XDG_STATE_HOME/vim/plugged') . '/rst2ctags/rst2ctags.py -f - --sort=yes',
         \ 'kinds' : [
             \ 's:sections',
