@@ -1,8 +1,10 @@
 # Default switches for ripgrep (rg)
 
 # Never look in these directories:
+--glob=!Applications
 --glob=!Library
 --glob=!.cache
+--glob=!.*cache
 --glob=!.vscode
 --glob=!.local
 --glob=!.cargo
