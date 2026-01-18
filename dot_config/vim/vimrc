@@ -451,12 +451,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:SignatureIncludeMarks = 'abcdefghijklmnopqrstuvwxyz'
     let g:SignatureMarkerLineHL = 'SignatureMarkLine'
 
-    "Plug 'mgedmin/coverage-highlight.vim'
-    "Plug '~/coverage/coverage-highlight.vim'
-
-    " It doesn't work usefully: different files aren't highlighted
-    "Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
-
     Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPMRUFiles', 'CtrlPBuffer'] }
     noremap <silent> <Leader>e :CtrlP<CR>
     "noremap <Leader><Leader>e :e<Space>
@@ -483,12 +477,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     if executable('rg')
         let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
     endif
-
-    " Plug 'pearofducks/ansible-vim'
-    " let g:ansible_attribute_highlight = 'ab'    " highlight all attributes, brightly.
-    " let g:ansible_name_highlight = 'd'
-
-    " Plug 'lambdalisue/fern.vim'
 
     Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
     if v:version >= 700
@@ -767,23 +755,17 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }     " Sane buffer closing
     noremap <Leader><Leader>q :set nomodified<CR>:Sayonara!<CR>
 
-    " Plug 'gregsexton/MatchTag'                          " Highlights paired HTML tags
-    " Plug 'Valloric/MatchTagAlways'                      " Highlights paired HTML tags
     Plug 'andymass/vim-matchup', { 'for': ['html', 'xhtml', 'xml'] }
     let g:matchup_matchparen_status_offscreen = 0
-
-    " Plug 'alvan/vim-closetag'                           " Close HTML/XML tags
-    " let g:closetag_filetypes = 'html,xhtml,xml'
-    " let g:closetag_xhtml_filetypes = 'xhtml,xml'
 
     Plug 'junegunn/vim-peekaboo'                        " Pop-up panel to show registers
     let g:peekaboo_window = 'vertical botright 50new'
     let g:peekaboo_delay = 750
 
     " Choose window by label
-    " Plug 't9md/vim-choosewin'
-    " nmap - <Plug>(choosewin)
-    " let g:choosewin_overlay_enable = 1
+    Plug 't9md/vim-choosewin'
+    nmap - <Plug>(choosewin)
+    let g:choosewin_overlay_enable = 1
 
     Plug 'atimholt/spiffy_foldtext'
     let g:SpiffyFoldtext_format = "%c %<%f{ }« %n »%l{==}"
@@ -799,10 +781,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     Plug 'jparise/vim-graphql'
     Plug 'Glench/Vim-Jinja2-Syntax'
-
-    " I couldn't get these to do anything...
-    " Plug 'inkarkat/vim-ingo-library'
-    " Plug 'inkarkat/vim-SyntaxRange'
 
     Plug 'sk1418/QFGrep'                                " Filter quickfix: \g \v \r
 
@@ -884,21 +862,10 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " Highlight the effect of commands as you type them.
     Plug 'markonm/traces.vim'
 
-    " Instant interpretation of code.
-    Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
-    let g:codi#interpreters = {
-        \ 'python': {
-            \ 'bin': 'python3',
-            \ },
-        \ }
-
     " Yank stack
     Plug 'maxbrunsfeld/vim-yankstack'
 
     " Color schemes
-    Plug 'tomasr/molokai'
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'nanotech/jellybeans.vim'
     Plug 'Rigellute/shades-of-purple.vim'
 
     augroup ColorSchemeFixes
@@ -910,17 +877,10 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         autocmd ColorScheme shades_of_purple highlight link pythonConditional Statement
         autocmd ColorScheme shades_of_purple highlight focus guibg=#5d5c83
         autocmd ColorScheme shades_of_purple let g:rainbow_conf['guifgs'] = ['#ffff80', '#80ffff', '#80ff80']
-        autocmd ColorScheme ayu highlight Comment gui=italic guifg=#33cc33
         autocmd ColorScheme neds let g:rainbow_conf['guifgs'] = ['royalblue3', 'darkorange3', 'seagreen4', 'firebrick']
     augroup end
 
-    " It doesn't show which files are different in the tree view:
-    " Plug 'taze55/vim-dirdifftree', { 'on': 'DirDiffTree' }
-
     Plug 'chrisbra/vim-diff-enhanced'
-
-    call plug#end()
-endif
 
 " Plugins I tried but didn't end up actually using:
 "
@@ -955,7 +915,41 @@ endif
 "   let g:BufKillActionWhenBufferDisplayedInAnotherWindow = 'remove'
 "   nmap <silent> <C-^> <Plug>BufKillAlt
 
+"   " Instant interpretation of code.
+"   Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
+"   let g:codi#interpreters = {
+"       \ 'python': {
+"           \ 'bin': 'python3',
+"           \ },
+"       \ }
 
+"   " It doesn't show which files are different in the tree view:
+"   Plug 'taze55/vim-dirdifftree', { 'on': 'DirDiffTree' }
+
+"   " I couldn't get these to do anything...
+"   Plug 'inkarkat/vim-ingo-library'
+"   Plug 'inkarkat/vim-SyntaxRange'
+
+"   Plug 'gregsexton/MatchTag'                          " Highlights paired HTML tags
+"   Plug 'Valloric/MatchTagAlways'                      " Highlights paired HTML tags
+"   Plug 'alvan/vim-closetag'                           " Close HTML/XML tags
+"   let g:closetag_filetypes = 'html,xhtml,xml'
+"   let g:closetag_xhtml_filetypes = 'xhtml,xml'
+
+    " Plug 'pearofducks/ansible-vim'
+    " let g:ansible_attribute_highlight = 'ab'    " highlight all attributes, brightly.
+    " let g:ansible_name_highlight = 'd'
+
+    " Plug 'lambdalisue/fern.vim'
+
+    "Plug 'mgedmin/coverage-highlight.vim'
+    "Plug '~/coverage/coverage-highlight.vim'
+
+    " It doesn't work usefully: different files aren't highlighted
+    "Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
+
+    call plug#end()
+endif
 
 ""
 "" Custom functions
