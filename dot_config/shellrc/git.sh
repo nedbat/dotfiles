@@ -37,8 +37,8 @@ export TIG_LS_REMOTE=git-ref-grep
 alias 1s='PAGER="head -n $(($(tput lines)-4))" GIT_PAGER=$PAGER'
 
 # Watch the actions, and when they pass, merge to main and push.
-alias gshipit='watch_gha_runs --wait-for-start --poll 5 --message="Shipping $(git rev-parse --abbrev-ref @)" && g ma && g brmerge- && g push'
-alias wgha='watch_gha_runs'
+alias gshipit='watchgha --wait-for-start --poll 5 --message="Shipping $(git rev-parse --abbrev-ref @)" && g ma && g brmerge- && g push'
+alias wgha='watchgha'
 
 # Make it easier to work with merge conflicts.
 alias eflict='e $(git flict)'
