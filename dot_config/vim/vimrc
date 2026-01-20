@@ -655,9 +655,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " Transiently highlight the word under the cursor everywhere it appears.
     Plug 'RRethy/vim-illuminate'
     let g:Illuminate_delay = 500
-    " include python in the blacklist because LSP handles it.
     let g:Illuminate_ftblacklist = [
-        \ 'python',
         \ 'nerdtree',
         \ 'qf',
         \ 'fugitive',

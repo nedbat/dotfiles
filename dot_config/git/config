@@ -122,6 +122,7 @@
     pa = "!f() { git push --all; git push --tags; }; f"
 
     # Get a plain-text diff, for making patches.
+    # Use `git apply <patch-file>` to apply, or maybe `git apply -R <patch-file>`.
     patch = "!f() { git --no-pager diff --no-color $@; }; f"
 
     # Show branches, verbosely, sorted by last touch, with commit messages.
