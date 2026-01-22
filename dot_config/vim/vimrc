@@ -406,7 +406,7 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
 
     Plug 'yegappan/lsp'
 
-    let lspOpts = #{
+    autocmd User LspSetup call LspOptionsSet(#{
         \ autoComplete: v:true,
         \ autoHighlight: v:true,
         \ autoHighlightDiags: v:false,
@@ -418,18 +418,16 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ semanticHighlight: v:true,
         \ showDiagInBalloon: v:false,
         \ showDiagWithVirtualText: v:false,
-        \ }
-    autocmd User LspSetup call LspOptionsSet(lspOpts)
+        \ })
 
-    let lspServers = [
+    autocmd User LspSetup call LspAddServer([
         \ #{
         \   name: 'pylsp',
         \   filetype: 'python',
         \   path: 'pylsp',
         \   args: [],
         \ },
-        \ ]
-    autocmd User LspSetup call LspAddServer(lspServers)
+        \ ])
 
     nnoremap K :LspHover<CR>
     nnoremap gd :LspGotoDefinition<CR>
