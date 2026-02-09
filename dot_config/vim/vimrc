@@ -404,6 +404,9 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     inoremap qq\ <Plug>(copilot-suggest)
     inoremap qq] <Plug>(copilot-next)
 
+    map <Leader>cd :Copilot disable<cr>
+    map <Leader>ce :Copilot enable<cr>
+
     Plug 'yegappan/lsp'
 
     autocmd User LspSetup call LspOptionsSet(#{
