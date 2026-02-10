@@ -13,6 +13,9 @@ function reloadConfig(files)
     end
 end
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+hs.hotkey.bind({"ctrl", "alt", "cmd"}, ".", function()
+    reloadConfig({os.getenv("HOME") .. "/.hammerspoon/init.lua"})
+end)
 hs.alert.show("Hammerspoon loaded")
 
 -- MouseCircle example (tweaked)
