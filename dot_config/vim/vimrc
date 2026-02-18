@@ -1086,7 +1086,7 @@ noremap <silent> gw :set opfunc=BetterGW<CR>g@
 nmap <Leader>p gwap
 nmap <Leader><Leader>p gw}
 nnoremap ,a :setlocal <C-R>=(&formatoptions =~# "a") ? 'formatoptions-=a' : 'formatoptions+=a'<CR><CR>
-nmap <Leader><Leader>b :write\|:!~/.local/bin/ruff format -q %<CR><CR>
+nmap <Leader><Leader>b :write\|let b:out=system('~/.local/bin/ruff format '.shellescape(expand('%')))\|let b:err=v:shell_error\|edit\|if b:err\|echohl ErrorMsg\|echo trim(b:out)\|echohl None\|endif<CR>
 
 " Duplicate the selection.
 noremap <Leader><Leader>d yPgvo<Esc>
