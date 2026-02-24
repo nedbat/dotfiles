@@ -423,6 +423,8 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
         \ showDiagWithVirtualText: v:false,
         \ })
 
+    " https://github.com/python-lsp/python-lsp-server
+    " $ brew install python-lsp-server
     autocmd User LspSetup call LspAddServer([
         \ #{
         \   name: 'pylsp',
