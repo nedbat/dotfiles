@@ -247,8 +247,8 @@ local function showVolumeOverlay()
     if volumeTimer then volumeTimer:stop() end
     
     local frame = hs.screen.primaryScreen():fullFrame()
-    local barWidth = 300
-    local barHeight = 40
+    local barWidth = 500
+    local barHeight = 100
     local x = (frame.w - barWidth) / 2
     local y = (frame.h - barHeight) / 2
     
@@ -261,10 +261,10 @@ local function showVolumeOverlay()
     })
     
     if muted then
-        margin = 10
+        margin = 30
         fillColor = {red = 0.9, alpha = 0.8}
     else
-        margin = 3
+        margin = 20
         fillColor = {blue = 0.3, green = 0.8, alpha = 0.8}
     end
     volumeCanvas:appendElements({
