@@ -256,7 +256,7 @@ local function showVolumeOverlay()
     
     volumeCanvas:appendElements({
         type = "rectangle",
-        fillColor = {white = 0.4, alpha = 0.6},
+        fillColor = {white = 0.8, alpha = 0.9},
         roundedRectRadii = {xRadius = 5, yRadius = 5},
     })
     
