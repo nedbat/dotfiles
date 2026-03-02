@@ -1,5 +1,8 @@
 # Default switches for ripgrep (rg)
 
+# All lower-case means case insensitive
+--smart-case
+
 # Never look in these directories:
 --glob=!Applications
 --glob=!Library
