@@ -4,6 +4,7 @@
 .lesshst
 .liquidpromptrc
 .screenrc
+.tmux.conf
 .zcompdump
 .zsh/
 bin/liquidprompt
