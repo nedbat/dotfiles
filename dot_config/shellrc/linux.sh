@@ -1,5 +1,6 @@
 if [[ "$(uname)" == "Linux" ]]; then
     # On mac, more is already less, but on linux it's not, so alias it.
-    alias more='less'
-    export LESS_IS_MORE=1
+    #alias more='less'
+    #export LESS_IS_MORE=1
+    # NEVER MIND, couldn't get it to work well
 fi
