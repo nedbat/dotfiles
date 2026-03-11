@@ -3,9 +3,9 @@
 
 print("(.startup.py)")
 
-import collections, datetime, dis, itertools, json, math, os, pprint, re, sys, time
+import collections, datetime as dt, dis, itertools, json, math, os, pprint, re, sys, time
 from pathlib import Path
-print("(imported collections, datetime, dis, itertools, json, math, os, re, sys, time, Path)")
+print("(imported collections, datetime as dt, dis, itertools, json, math, os, re, sys, time, Path)")
 
 pp = pprint.pprint
 
