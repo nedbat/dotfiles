@@ -3,4 +3,5 @@ if [[ "$(uname)" == "Linux" ]]; then
     #alias more='less'
     #export LESS_IS_MORE=1
     # NEVER MIND, couldn't get it to work well
+    true
 fi
