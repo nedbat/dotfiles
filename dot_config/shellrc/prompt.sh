@@ -10,16 +10,10 @@ if [[ -n $PS1 ]]; then
         }
     else
         plain_prompt() {
-            prompt_OFF
-            export PS1=$(printf "\n$ ")
+            true
         }
         fancy_prompt() {
-            source ~/bin/liquidprompt/liquidprompt
-            lp_terminal_format 8
-            export LP_PS1_PREFIX="${lp_terminal_format}██████ "
-            if [[ $SHELL_TYPE != zsh ]]; then
-                export LP_PS1_PREFIX="${SHELL_TYPE:0:1} "
-            fi
+            true
         }
     fi
     fancy_prompt
