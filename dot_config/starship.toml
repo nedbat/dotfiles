@@ -15,11 +15,11 @@ $git_metrics\
 $git_status\
 $custom\
 $line_break\
-$shlvl\
 $jobs\
 $sudo\
 $status\
 $cmd_duration\
+$shlvl\
 $character\
 """
 add_newline = true
@@ -78,6 +78,11 @@ format = '[(\($virtualenv\) )]($style)'
 
 [shlvl]
 disabled = false
+format = '[$symbol]($style)'
+style = 'bold'
+symbol = "❯"
+repeat = true
+repeat_offset = 1
 
 [status]
 disabled = false
