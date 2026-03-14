@@ -14,7 +14,7 @@ if command -v eza &>/dev/null; then
     # alias ltttt='lt --level=3'
     for n in {2..5}; do alias l$(printf 't%.0s' {1..$n})="lt --level=$n"; done
 else
-    alias l="ls -lFhH"
+    alias l="ls -lFhH --color"
     alias la="l -A"
     if [[ $SHELL_TYPE == zsh ]]; then
         # https://twitter.com/dailyzshtip/status/1534925273703096322
