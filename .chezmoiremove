@@ -14,8 +14,6 @@
 .screenrc
 .startup.py
 .tmux.conf
-.vim
-.vimrc
 .zcompdump
 .zsh/
 bin/liquidprompt
