@@ -173,22 +173,19 @@ end
 --
 
 -- print("Running applications:")
-for _, app in ipairs(hs.application.runningApplications()) do
-    local ok, path = pcall(function() return app:path() end)
-    if ok then
-        -- print(app)
-        -- print(app:path())
-        if path and path:find("Messenger") then
-            messenger_path = path
-        end
-    end
-end
+--for _, app in ipairs(hs.application.runningApplications()) do
+--    local ok, path = pcall(function() return app:path() end)
+--    if ok then
+--        -- print(app)
+--        -- print(app:path())
+--    end
+--end
 -- print("-----")
 
 appShortcuts = {
     {"D", "Discord"},
-    {"F", "Spotify"},
-    {"G", messenger_path},
+    {"F", "TIDAL"},
+    {"G", "WhatsApp"},
     {"H", "Google Chrome"},
     {"I", "Textual 7"},
     {"M", "Mail"},
