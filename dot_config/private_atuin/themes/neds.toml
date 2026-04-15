@@ -1,0 +1,6 @@
+[theme]
+name = "neds"
+
+[colors]
+Important = "#ffffff"    # selected item: white
+AlertError = "#ffffff"   # some versions use this for selected
