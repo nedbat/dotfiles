@@ -204,7 +204,7 @@ let filestatus .= ' %1*%{&readonly ? "" : &modified ? " + " : &modifiable ? "" :
 let filestatus .= '%3*%{&readonly ? (&modified ? " + " : " ∅ ") : ""}%*'
 let filestatus .= '%{&readonly? "" : &modified ? "" : &modifiable ? "   " : ""}'
 let filestatus .= ' %<%f  '
-let filestatus .= '%2*%{tagbar#currenttag(" %s ", "", "f")}%*'
+"let filestatus .= '%2*%{tagbar#currenttag(" %s ", "", "f")}%*'
 "if exists('*FugitiveStatusline')
     let filestatus .= ' %2*%{FugitiveHead(8)}%* '
 "endif
