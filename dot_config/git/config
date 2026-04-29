@@ -89,10 +89,9 @@
     ampf = "!f() { git amend -a --allow-empty; git pushf; }; f"
     puo = push -u origin @
 
-    # Find the name of the primary branch, either "main" or "master".
+    # Find the name of the primary branch, usually "main" or "master".
     primary = "!f() { \
-        git branch -a | \
-        sed -n -E -e '/remotes.origin.ma(in|ster)$/s@remotes/origin/@@p'; \
+        git symbolic-ref refs/remotes/origin/HEAD | sed -n -E -e 's@refs/remotes/origin/@@p'; \
     }; f"
 
     # Switch to main or master, whichever exists, and update it.
