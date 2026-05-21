@@ -308,3 +308,15 @@ hs.audiodevice.watcher.setCallback(function(event)
     end
 end)
 hs.audiodevice.watcher.start()
+
+--
+-- Fix Apple Mail send shortcut, by Claude
+--
+
+local mailSend = hs.hotkey.new({"cmd"}, "return", function()
+    hs.application.frontmostApplication():selectMenuItem({"Message", "Send"})
+end)
+
+hs.window.filter.new("Mail")
+    :subscribe(hs.window.filter.windowFocused,   function() mailSend:enable()  end)
+    :subscribe(hs.window.filter.windowUnfocused, function() mailSend:disable() end)
