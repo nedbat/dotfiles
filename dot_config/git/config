@@ -198,11 +198,16 @@
     fork = "!f() { \
         local upstream=$(git remote get-url origin); \
         local github=$(echo $upstream | awk -F/ '{ print $3 }'); \
-        echo github=$github; \
         local user=$(git config get forkfor.$github.user); \
-        echo user=$user; \
+        if [ -z "$user" ]; then \
+            echo "No git config for forkfor.$github.user!"; \
+            exit; \
+        fi; \
         local myhost=$(git config get forkfor.$github.myhost); \
-        echo myhost=$myhost; \
+        if [ -z "$myhost" ]; then \
+            echo "No git config for forkfor.$github.myhost!"; \
+            exit; \
+        fi; \
         local origin=$(echo $upstream | awk -F/ '{ print myhost new S $5 }' myhost=$myhost S=/ new=$user); \
         echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; \
         read X; \
