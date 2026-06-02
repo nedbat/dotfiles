@@ -198,8 +198,11 @@
     fork = "!f() { \
         local upstream=$(git remote get-url origin); \
         local github=$(echo $upstream | awk -F/ '{ print $3 }'); \
+        echo github=$github; \
         local user=$(git config get forkfor.$github.user); \
+        echo user=$user; \
         local myhost=$(git config get forkfor.$github.myhost); \
+        echo myhost=$myhost; \
         local origin=$(echo $upstream | awk -F/ '{ print myhost new S $5 }' myhost=$myhost S=/ new=$user); \
         echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; \
         read X; \
@@ -220,7 +223,7 @@
         done; \
         git remote remove origin; \
         git remote rename upstream origin; \
-        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), delete the fork, waiting...; \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), use Delete this repository; waiting...; \
         read X; \
         echo re-push any branches you need...; \
     }; f"
