@@ -217,6 +217,7 @@
         for br in $(git branch --format='%(refname:short)'); do \
             git branch -u origin $br; \
         done; \
+        git who; \
     }; f"
 
     # Removing a fork. Assumes there are two remotes: origin and upstream.
@@ -230,6 +231,7 @@
         git remote rename upstream origin; \
         echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), use Delete this repository; waiting...; \
         read X; \
+        git who; \
         echo re-push any branches you need...; \
     }; f"
 
