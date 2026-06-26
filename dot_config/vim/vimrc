@@ -204,7 +204,12 @@ let filestatus .= ' %1*%{&readonly ? "" : &modified ? " + " : &modifiable ? "" :
 let filestatus .= '%3*%{&readonly ? (&modified ? " + " : " ∅ ") : ""}%*'
 let filestatus .= '%{&readonly? "" : &modified ? "" : &modifiable ? "   " : ""}'
 let filestatus .= ' %<%f  '
-let filestatus .= '%2*%{tagbar#currenttag(" %s ", "", "f")}%*'
+if has('gui_running')
+    " I don't know why, but this currenttag segment causes terminal vim to not
+    " draw properly at first, and consume the first character I type. We'll do
+    " without the current tag in terminal vim.
+    let filestatus .= '%2*%{tagbar#currenttag(" %s ", "", "f")}%*'
+endif
 "if exists('*FugitiveStatusline')
     let filestatus .= ' %2*%{FugitiveHead(8)}%* '
 "endif
