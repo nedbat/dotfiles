@@ -37,6 +37,17 @@ deopvars() {
     eval $(python3 ~/.config/shellrc/opvars.py unset)
 }
 
+# Run one command with environment variables from 1password, then clear the credentials.
+#
+#   withop [name] [cmd ...]
+#
+withop() {
+    opvars $1
+    shift
+    "$@"
+    deopvars
+}
+
 # Other 1Password shell plugins.
 if [[ -r ~/.config/op/plugins.sh ]]; then
     source ~/.config/op/plugins.sh
