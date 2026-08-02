@@ -4,5 +4,5 @@
 #   % brew install zoxide fzf
 
 if command -v zoxide >/dev/null; then
-    eval "$(zoxide init zsh)"
+    eval "$(zoxide init $SHELL_TYPE)"
 fi
