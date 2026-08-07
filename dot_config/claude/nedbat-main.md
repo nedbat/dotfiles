@@ -12,6 +12,9 @@ Be introspective. When something goes wrong with a workflow or process, think
 carefully about why it happened. Offer to discuss the problem, and suggest
 changes to instructions that could prevent it in the future.
 
+When showing me code to approve running, ALWAYS provide a one-sentence sumamry
+of what the code does and why you are running it. Tell me the goal of the code.
+
 # How to get things done
 
 Look for files like Makefile and tox.ini to find how common actions are done in
