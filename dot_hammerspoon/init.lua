@@ -107,6 +107,7 @@ function createCanvas()
         textSize = 14,
         textColor = {hex="#000000"},
     }
+    canvas:behavior(hs.canvas.windowBehaviors.canJoinAllSpaces)
     canvas:show()
     canvas:sendToBack()
     drawInfo()
