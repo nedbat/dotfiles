@@ -21,27 +21,6 @@ if [[ -w /tmp ]]; then
     chmod 700 $PYTHONPYCACHEPREFIX
 fi
 
-# Virtualenvwrapper support.
-# Use ~/bin/install-pip-etc.sh to get virtualenv and virtualenvwrapper installed
-# in all versions of Python.  Shouldn't need anything in .local.
-virtualenvwrappersh=$(command -v virtualenvwrapper.sh)
-workon_homes=(
-    /usr/local/virtualenvs
-    $HOME/.virtualenvs
-    )
-workon_home=$(_first_of "${workon_homes[@]}")
-if [[ -r "$virtualenvwrappersh" ]] && [[ -d "$workon_home" ]]; then
-    export WORKON_HOME=$workon_home
-    export VIRTUALENVWRAPPER_PYTHON=$(python3 -c "import os.path,sys; print(os.path.realpath(sys.executable))")
-    source $virtualenvwrappersh
-else
-    if [[ -n $PS1 ]]; then
-        echo "No virtualenvwrapper for $(python3 -V): $_PYTHON_BIN"
-        echo "  to fix:"
-        echo "  PIP_REQUIRE_VIRTUALENV= python3 -m pip install virtualenvwrapper"
-    fi
-fi
-
 # Activate a virtualenv somewhere, default here.
 workin() {
     for d in ${1:-.}/{.,venv,.venv}; do
