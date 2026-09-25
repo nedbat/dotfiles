@@ -5,6 +5,7 @@ endif
 syntax match diaryDate /\v^\= \d\d?\/\d.*$/
 syntax match diaryTodo /\v- todo:.*$/
 syntax match diaryXodo /\v- xodo:.*$/
+syntax match diaryXodo /\v- keep:.*$/
 syntax match diaryDone /\v- done:.*$/
 syntax match diaryDone /\v- togh:.*$/
 syntax match diaryProg /\v- prog:.*$/
