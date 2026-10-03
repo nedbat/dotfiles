@@ -43,3 +43,9 @@ alias wgha='watchgha'
 # Make it easier to work with merge conflicts.
 alias eflict='e $(git flict)'
 alias gaflict='git add $(git flict)'
+
+# Checkout a PR from someone's fork
+alias otherpr='withop github gh pr checkout $1'
+
+# Push back to the PR from someone's fork
+alias otherpush='withop github git -c credential.helper="!gh auth git-credential" push'

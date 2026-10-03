@@ -209,7 +209,7 @@
             exit; \
         fi; \
         local origin=$(echo $upstream | awk -F/ '{ print myhost new S $5 }' myhost=$myhost S=/ new=$user); \
-        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo, waiting...; \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/fork@'), fork the repo. waiting...; \
         read X; \
         git remote rename origin upstream; \
         git remote add origin $origin; \
@@ -229,7 +229,7 @@
         done; \
         git remote remove origin; \
         git remote rename upstream origin; \
-        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), use Delete this repository; waiting...; \
+        echo visit $(echo $upstream | sed -E -e 's@(.git)?$@/settings#danger-zone@'), use Delete this repository. waiting...; \
         read X; \
         git who; \
         echo re-push any branches you need...; \
