@@ -69,9 +69,11 @@ if [[ $SHELL_TYPE == zsh && -n $PS1 ]]; then
 
         local -a hooks
         local hook
-        # modifiers: N (don't error) - (follow symlinks) .x (regular executable files)
-        for hook in $hooks_dir/*(N-.x); do
-            if [[ $hook != *.sample ]]; then
+        # zsh glob qualifiers like (N-.x) are a syntax error in bash, which also
+        # sources this file, so test the file type and mode explicitly.
+        setopt localoptions nullglob
+        for hook in $hooks_dir/*; do
+            if [[ -f $hook && -x $hook && $hook != *.sample ]]; then
                 hooks+=(${hook:t})
             fi
         done
