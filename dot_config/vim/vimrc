@@ -861,13 +861,15 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'Einenlum/yaml-revealer'
 
     " Open URLs, because netrw's gx is broken: https://github.com/vim/vim/issues/1386
-    Plug 'dhruvasagar/vim-open-url'
-    nmap gx <Plug>(open-url-browser)
-    xmap gx <Plug>(open-url-browser)
-    " https://github.com/dhruvasagar/vim-open-url/issues/7#issuecomment-787398894
-    " ('open_url#open_in' only works on mac)
-    nmap gc :call open_url#open_in('google chrome', expand('<cfile>'))<cr>
-    xmap gc :call open_url#open_in('google chrome', open_url#get_selection())<cr>
+    " Except now vim-open-url is broken, and default gx seems fine, so don't
+    " use it anymore.
+    "Plug 'dhruvasagar/vim-open-url'
+    "nmap gx <Plug>(open-url-browser)
+    "xmap gx <Plug>(open-url-browser)
+    "" https://github.com/dhruvasagar/vim-open-url/issues/7#issuecomment-787398894
+    "" ('open_url#open_in' only works on mac)
+    "nmap gc :call open_url#open_in('google chrome', expand('<cfile>'))<cr>
+    "xmap gc :call open_url#open_in('google chrome', open_url#get_selection())<cr>
 
     " Highlight the effect of commands as you type them.
     Plug 'markonm/traces.vim'
