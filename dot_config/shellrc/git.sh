@@ -117,4 +117,8 @@ if [[ $SHELL_TYPE == zsh && -n $PS1 ]]; then
     autoload -Uz add-zsh-hook
     add-zsh-hook chpwd git_show_hooks
     add-zsh-hook chpwd git_check_precommit
+
+    # Run them once on shell startup to check our starting directory.
+    git_show_hooks
+    git_check_precommit
 fi
