@@ -28,27 +28,39 @@ nnoremap <silent> <buffer> [d ?\v^\= \d<CR>:nohl<CR>zvzz
 function! Today()
     let line = strftime("= %m/%d/%Y, %A")
     let line = substitute(substitute(line, ' 0', ' ', 'g'), '/0', '/', 'g')
-    call feedkeys("gg]dO" . line . "\n- today:\n\<ESC>kA")
+    call feedkeys("gg]dO" . line . "\n\<ESC>kA")
 endfunction
 command! Today :call Today()
 
-" Move the todo on the current line into today's "- today:" section,
+" Move the todo on the current line into the newest day's "- today:" section,
 " leaving a "push:" marker behind so the history still shows it happened.
+" The "- today:" line is created on first use, so days without moved todos
+" don't get an empty section.
 function! MoveTodoToToday()
     let text = getline('.')
     if text !~ '\v- todo:'
         echo "Not a todo line"
         return
     endif
-    call setline('.', substitute(text, '- todo:', '- push:', ''))
 
     let saved = getpos('.')
     call cursor(1, 1)
-    let today_line = search('^- today:$', 'cW')
-    call setpos('.', saved)
-    if today_line == 0
-        echoerr "No '- today:' section found"
+    let day_line = search('\v^\= \d', 'cW')
+    if day_line == 0
+        call setpos('.', saved)
+        echoerr "No day heading found"
         return
+    endif
+    let day_end = search('^= ', 'W')
+    let day_end = day_end == 0 ? line('$') : day_end - 1
+    call cursor(day_line, 1)
+    let today_line = search('^- today:$', 'W', day_end)
+    call setpos('.', saved)
+
+    call setline('.', substitute(text, '- todo:', '- push:', ''))
+    if today_line == 0
+        call append(day_line, '- today:')
+        let today_line = day_line + 1
     endif
 
     let insert_after = today_line
