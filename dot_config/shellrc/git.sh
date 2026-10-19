@@ -45,10 +45,10 @@ alias eflict='e $(git flict)'
 alias gaflict='git add $(git flict)'
 
 # Checkout a PR from someone's fork
-alias otherpr='withop github gh pr checkout $1'
+alias prother='withop github gh pr checkout $1'
 
 # Push back to the PR from someone's fork
-alias otherpush='withop github git -c credential.helper="!gh auth git-credential" push'
+alias pushother='withop github git -c credential.helper="!gh auth git-credential" push --no-follow-tags "$(git config "branch.$(git branch --show-current).pushRemote")" HEAD'
 
 # Git hooks are invisible but change what git commands do, so announce them
 # when entering a repo.
