@@ -15,6 +15,17 @@ changes to instructions that could prevent it in the future.
 When showing me code to approve running, ALWAYS provide a one-sentence sumamry
 of what the code does and why you are running it. Tell me the goal of the code.
 
+# Sessions
+
+When finishing a task, write a summary file in ~/work/claude. Name the file
+with a date and a short slug about the task. For example: 2026-10-23-update-claude-md.txt
+Keep it short. In the file, give a very brief summary of the task, name the
+directory we were in, and the --resume value needed to pick up the conversation.
+
+When I say "end session", do the wrap-up now: run the final tests and quality
+checks, write the summary file described above, and then stop. I will exit the
+session myself afterward.
+
 # How to get things done
 
 Look for files like Makefile and tox.ini to find how common actions are done in
