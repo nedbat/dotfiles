@@ -68,7 +68,7 @@ def main():
             cmd(f"echo Nothing set")
         cmd(f"export {PROMPT_VAR}=''")
         cmd(f"unset {OPVARS_VAR}")
-        cmd(f'title "${ORIGNAL_TITLE_VAR}"')
+        cmd(f'title "${{{ORIGNAL_TITLE_VAR}:=$WINDOW_TITLE}}"')
         cmd(f"unset {ORIGNAL_TITLE_VAR}")
 
     end_cmd()
