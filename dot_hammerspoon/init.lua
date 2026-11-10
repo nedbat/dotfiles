@@ -93,7 +93,7 @@ function createCanvas()
         x = fullFrame.x,
         y = frame.y - 1,    -- Tahoe left a 1-pixel gap
         w = frame.x - fullFrame.x,
-        h = fullFrame.h / 2,
+        h = fullFrame.h,
     })
     canvas[1] = {
         type = "rectangle",
