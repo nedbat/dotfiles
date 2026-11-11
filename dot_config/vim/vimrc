@@ -732,7 +732,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     noremap <Leader><Leader>gl :Flogsplit -path=%<CR>   " Show the git log for the current file
     noremap <Leader>go :Git checkout<space>
     noremap <Leader>gp :Git pull<CR>
-    "noremap <Leader>gr :Git rm %<CR>
     noremap <Leader>gu :GBrowse!<CR>
     noremap <Leader>gv :GBrowse<CR>
 
@@ -773,11 +772,6 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     let g:peekaboo_window = 'vertical botright 50new'
     let g:peekaboo_delay = 750
 
-    " Choose window by label
-    Plug 't9md/vim-choosewin'
-    nmap - <Plug>(choosewin)
-    let g:choosewin_overlay_enable = 1
-
     Plug 'atimholt/spiffy_foldtext'
     let g:SpiffyFoldtext_format = "%c %<%f{ }« %n »%l{==}"
 
@@ -786,18 +780,14 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
     "Plug 'trapd00r/irc.vim', { 'for': 'irc' }
     Plug 'nedbat/irc.vim', { 'for': 'irc' }
+    Plug 'jparise/vim-graphql'
+    Plug 'Glench/Vim-Jinja2-Syntax'
+
     Plug 'plasticboy/vim-markdown'
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_follow_anchor = 1
 
-    Plug 'jparise/vim-graphql'
-    Plug 'Glench/Vim-Jinja2-Syntax'
-
     Plug 'sk1418/QFGrep'                                " Filter quickfix: \g \v \r
-
-    Plug 'editorconfig/editorconfig-vim'                " Obey .editorconfig files
-    let g:EditorConfig_preserve_formatoptions = 1
-    let g:EditorConfig_exclude_patterns = ['fugitive://.*', '^\.git/']   " Don't fiddle with anything in a .git directory
 
     Plug 'bogado/file-line'                             " Enables opening and jumping to line with: foo.txt:345
 
@@ -961,8 +951,24 @@ if !empty(globpath(&rtp, 'autoload/plug.vim'))
     " It doesn't work usefully: different files aren't highlighted
     "Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
 
+    " Choose window by label
+    "Plug 't9md/vim-choosewin'
+    "nmap - <Plug>(choosewin)
+    "let g:choosewin_overlay_enable = 1
+
     call plug#end()
 endif
+
+""
+"" Optional packages
+""
+
+packadd! matchit
+
+packadd! editorconfig
+let g:EditorConfig_preserve_formatoptions = 1
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', '^\.git/']   " Don't fiddle with anything in a .git directory
+
 
 ""
 "" Custom functions
@@ -1371,8 +1377,6 @@ xnoremap Q :'<,'>normal @q<CR>
 
 " Tab selects items from the pop-up menu, or Copilot suggestion if no menu.
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : copilot#Accept()
-
-runtime macros/matchit.vim
 
 " local-ish customizations
 runtime ../work/vim/*.vim
