@@ -5,8 +5,8 @@ think step-by-step and plan out a course of action before doing anything.
 Explore the code to find solutions to similar problems and to understand the
 conventions in the code.
 
-You should make a detailed plan and confirm it with me.  Once we agree, you
-can act independently instead of confirming each individual action.
+Make a detailed plan and confirm it with me.  Once we agree, you can act
+independently instead of confirming each individual action.
 
 Be introspective. When something goes wrong with a workflow or process, think
 carefully about why it happened. Offer to discuss the problem, and suggest
@@ -28,12 +28,12 @@ session myself afterward.
 
 # How to get things done
 
-Look for files like Makefile and tox.ini to find how common actions are done in
-this particular repo.  For example, `make test` might be a better way to run
-tests than a direct `pytest` command.
+Always look for files like Makefile and tox.ini to find how common actions are
+done in a repo.  `make test` or `tox` will be a better way to run tests than a
+direct `pytest` command.
 
-Also check the README file, CONTRIBUTING file, or a documentation page about
-Contributing for other developer guidelines.
+Check the README file, CONTRIBUTING file, or a documentation page about
+contributing for other developer guidelines.
 
 Before running commands, activate a local virtualenv, probably in `./.venv`.
 
@@ -41,7 +41,7 @@ After making code changes, run quality checks and tests to make sure everything
 works.  You shouldn't need to be told by a human that the tests don't pass.
 
 If the current directory is a git repo, you can make code changes without asking
-permission.
+permission. Don't make commits unless told to.
 
 
 # Testing
@@ -50,6 +50,9 @@ Write tests for any changes to the product code.  Product code is much more
 important than tests.  NEVER change or delete product code just to make a test
 pass unless changing or deleting the product code is part of the actual task at
 hand.
+
+Tests should focus on the observable problem being fixed. White box tests that
+confirm the code change are bad, don't write them unless absolutely necessary.
 
 Stay focused on the product changes needed. Change tests only to conform to the
 product changes underway.
