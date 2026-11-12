@@ -18,3 +18,5 @@ endfunc
 augroup rst_section | au!
     au InsertLeave <buffer> :call s:section_delimiter_adjust()
 augroup END
+
+command! -buffer -range GatherRefs <line1>,<line2>call gatherrefs#gather()
