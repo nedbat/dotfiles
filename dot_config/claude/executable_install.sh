@@ -18,6 +18,20 @@ else
     echo "CLAUDE.md: added include line"
 fi
 
+mkdir -p "$HOME/.claude/skills"
+for skill in "$config_dir"/skills/*/; do
+    name=$(basename "$skill")
+    link="$HOME/.claude/skills/$name"
+    if [ -L "$link" ]; then
+        echo "skills: $name already linked"
+    elif [ -e "$link" ]; then
+        echo "skills: $link exists and isn't a link, leaving it alone" >&2
+    else
+        ln -s "${skill%/}" "$link"
+        echo "skills: linked $name"
+    fi
+done
+
 [ -s "$settings" ] || echo '{}' > "$settings"
 
 if jq -e --arg cmd "$hook_cmd" \

@@ -37,12 +37,22 @@ contributing for other developer guidelines.
 
 Before running commands, activate a local virtualenv, probably in `./.venv`.
 
+When using gh, use the bare binary to avoid the 1Password wrapper. If the
+gh credentials aren't set, point that out and stop. I'll set them and resume.
+
 After making code changes, run quality checks and tests to make sure everything
 works.  You shouldn't need to be told by a human that the tests don't pass.
 
 If the current directory is a git repo, you can make code changes without asking
 permission. Don't make commits unless told to.
 
+For long-running background commands, print progress as N/total, tell me the
+output file to tail, and give a rough time estimate when starting. Base the
+estimate on a timed single iteration, not a guess from similar work.
+
+The shell is zsh: a glob that matches nothing is an error, not an empty list.
+Use the `(N)` qualifier or `find ... -delete` for globs that may be empty, and
+`${=var}` to word-split a variable.
 
 # Testing
 
