@@ -22,9 +22,9 @@ with a date and a short slug about the task. For example: 2026-10-23-update-clau
 Keep it short. In the file, give a very brief summary of the task, name the
 directory we were in, and the --resume value needed to pick up the conversation.
 
-When I say "end session", do the wrap-up now: run the final tests and quality
-checks, write the summary file described above, and then stop. I will exit the
-session myself afterward.
+When I say "end session", do the wrap-up now: write the summary file described
+above, and then stop. There is no need to re-run tests or quality checks.
+I will exit the session myself afterward.
 
 # How to get things done
 
@@ -37,8 +37,11 @@ contributing for other developer guidelines.
 
 Before running commands, activate a local virtualenv, probably in `./.venv`.
 
-When using gh, use the bare binary to avoid the 1Password wrapper. If the
-gh credentials aren't set, point that out and stop. I'll set them and resume.
+When using gh, avoid the 1Password wrapper: in the shell, `gh` is an alias
+for `op plugin run -- gh`, which fails with "interactive IO not available".
+Run the binary by its full path, `/opt/homebrew/bin/gh` (confirm with `type -a
+gh`), for every gh command. If `/opt/homebrew/bin/gh auth status` fails, the
+gh credentials aren't set: point that out and stop. I'll set them and resume.
 
 After making code changes, run quality checks and tests to make sure everything
 works.  You shouldn't need to be told by a human that the tests don't pass.
